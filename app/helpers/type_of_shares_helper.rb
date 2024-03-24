@@ -1,0 +1,2 @@
+module TypeOfSharesHelper
+end

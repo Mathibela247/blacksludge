@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "modal" do %>
+  <div class="modal">
+    <div id="<%= dom_id print %>">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text">QR Code here</p>
+          
+        </div>
+      </div>
+      <div>
+      <%= link_to "Cancel", "#", data: {
+        controller: "modals",
+        action: "modal#close"
+      }, class: "cancel-button" %>
+      </div>
+    </div>
+  </div>
+<% end %>  

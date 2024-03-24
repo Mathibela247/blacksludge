@@ -1,0 +1,16 @@
+
+<%# <%= render TurboModalComponent.new(title: "New Resoultion!") do %> 
+<%= turbo_frame_tag "modal" do %>
+  <%# <div class="modal"> %>
+    <%= render "form", resolution: @resolution %>
+
+    <br>
+
+    <div>
+      <%= link_to "Cancel", "#", data: {
+        controller: "modals",
+        action: "modals#close", class: "cancel-button"
+      } %>
+    <%# </div> %>
+  </div>  
+<% end %>    

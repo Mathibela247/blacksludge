@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Proxy instructions</h1>
+
+<div id="proxy_instructions">
+  <% @proxy_instructions.each do |proxy_instruction| %>
+    <%= render proxy_instruction %>
+    <p>
+      <%= link_to "Show this proxy instruction", proxy_instruction %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New proxy instruction", new_proxy_instruction_path %>

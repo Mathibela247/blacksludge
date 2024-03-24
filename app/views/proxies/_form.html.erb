@@ -1,0 +1,57 @@
+<%= form_with(model: proxy) do |form| %>
+  <% if proxy.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(proxy.errors.count, "error") %> prohibited this proxy from being saved:</h2>
+
+      <ul>
+        <% proxy.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :firstname, style: "display: block" %>
+    <%= form.text_field :firstname %>
+  </div>
+
+  <div>
+    <%= form.label :lastname, style: "display: block" %>
+    <%= form.text_field :lastname %>
+  </div>
+
+  <div>
+    <%= form.label :member_number, style: "display: block" %>
+    <%= form.text_field :member_number %>
+  </div>
+
+  <div>
+    <%= form.label :proxy_type_id, style: "display: block" %>
+    <%= form.number_field :proxy_type_id %>
+  </div>
+
+  <div>
+    <%= form.label :proxy_firstname, style: "display: block" %>
+    <%= form.text_field :proxy_firstname %>
+  </div>
+
+  <div>
+    <%= form.label :proxy_lastname, style: "display: block" %>
+    <%= form.text_field :proxy_lastname %>
+  </div>
+
+  <div>
+    <%= form.label :proxy_member_number, style: "display: block" %>
+    <%= form.text_field :proxy_member_number %>
+  </div>
+
+  <div>
+    <%= form.label :proxy_instruction_id, style: "display: block" %>
+    <%= form.number_field :proxy_instruction_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

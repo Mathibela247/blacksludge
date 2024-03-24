@@ -1,0 +1,27 @@
+
+<p style="color: green"><%= notice %></p>
+
+<h1>Checkins</h1>
+
+<div id="checkins">  
+  <table class="table">
+    <th colspan=4><h2>Attendance Register</h2></th>
+      <tbody>
+
+        <% 
+        
+        @checkins = Checkin.all
+        
+        @checkins.each do |checkin| 
+        
+        %>
+          <%= render checkin %>
+        <% end %>
+        <tr>
+          <td><b>Total:</b></td><td colspan=3><%= Checkin.all.count %></td>
+        </tr>
+      </tbody>
+  </table>
+</div>
+
+<%= link_to "Back", attendees_path %>

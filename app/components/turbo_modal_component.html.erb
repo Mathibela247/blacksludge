@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "modal" do %>
+  <%= tag.div data: { controller: "turbo-modal" }, class: "ml-4 flex items-center md:ml-6" do %>
+    <%= tag.div data: { controller: "turbo-modal" }, class: "w-400 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" do %>
+        <h1 class="font-bold text-4xl"><%= @title %></h1>
+        <%= content %>
+        <%= button_tag "Close", data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end %>
+  <% end %>
+<% end %>

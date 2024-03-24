@@ -1,0 +1,30 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Events</h1>
+
+<div id="events">
+  <table class="table table-light table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><label for="basic-url" class="form-label">Event URL</label></th>
+        <th scope="col"><strong>Event name:</strong></th>
+        <th scope="col"><strong>Event type:</strong></th>
+        <th scope="col"><strong>Location name:</strong></th>
+        <th scope="col"><strong>Location address:</strong></th>
+        <th scope="col"><strong>Start date:</strong></th>
+        <th scope="col"><strong>End date:</strong></th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+  <% if @events.present? == true %>  
+    <% @events.each do |event| %>
+      <%= render event %>
+    <% end %>
+  <% else%>
+    
+    <% end %>  
+  </table>
+</div>
+
+<%= link_to "New event", new_event_path, class: "btn btn-primary" %>

@@ -1,0 +1,21 @@
+<div id="<%= dom_id attendee %>"> 
+  <tr>
+    <td><%= attendee.first_name %> <%= attendee.last_name %></td>
+      <td> <%= attendee.email %></td> 
+        <%= form_with model: @checkin do |f| %>
+          <div data-controller="checkbox-select">
+            <td>
+              <div class="field">
+                <%= f.hidden_field :attendee_id, value: attendee.id %>
+                <%= f.check_box :checked_in, { data: { checkbox_select_target: "attendee"}, action: "change->checkbox-select#toggleAttendee" }, true, false %> <br />
+              </div>
+            </td> 
+            <td> 
+              <div>
+                <%= f.submit "Check-in", class: "btn-primary" %>
+              </div>
+            </td>  
+          </div>  
+        <% end %>
+  </tr>
+</div>

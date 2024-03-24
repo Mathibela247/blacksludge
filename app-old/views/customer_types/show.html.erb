@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @customer_type %>
+
+<div>
+  <%= link_to "Edit this customer type", edit_customer_type_path(@customer_type) %> |
+  <%= link_to "Back to customer types", customer_types_path %>
+
+  <%= button_to "Destroy this customer type", @customer_type, method: :delete %>
+</div>

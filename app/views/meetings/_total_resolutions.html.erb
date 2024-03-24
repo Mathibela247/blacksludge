@@ -1,0 +1,16 @@
+
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title"><%= @resolution.description %></h5>
+        </div>   
+        <div class="card-body"> 
+          <%# if current_user.role == "Admin" %> 
+            Score: <%= @resolution.cached_votes_score %><br/>
+            Votes For: <%= @resolution.cached_votes_up %><br/>
+            Votes Against: <%= @resolution.cached_votes_down %><br/>          
+            Total votes: <%= @resolution.cached_votes_total %><br/>
+            Total weighted: <%= @resolution.cached_weighted_total %><br/>
+            Total abstainance: <%= @abstain %>
+          <%# end %> 
+        </div>
+      </div>

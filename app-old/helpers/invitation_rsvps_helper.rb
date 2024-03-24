@@ -1,0 +1,2 @@
+module InvitationRsvpsHelper
+end

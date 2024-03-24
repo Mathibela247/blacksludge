@@ -1,0 +1,18 @@
+<div id="<%= dom_id event %>">
+  
+    <tbody>
+      <tr>
+        <th scope="row"><%= link_to event.id, event_path(event) %></th>
+        <td><%= event.event_name %></td>
+        <td><%= event.event_type.name %></td>
+        <td><%= event.location_name %></td>
+        <td><%= event.location_address %></td>
+        <td><%= event.start_time %></td>
+        <td><%= event.end_time %></td>
+        <%# <td><%= event.to_icalendar %>
+        <td><%= link_to "add to calendar", event_path(event, format: :ics), class: "btn btn-sm btn-primary" %></td>
+        <td><%= button_to "Send Email Invite", invite_event_path(event), class: "btn btn-sm btn-success" %></td>
+      </tr>
+    </tbody>
+  
+</div>

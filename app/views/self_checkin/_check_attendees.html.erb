@@ -1,0 +1,29 @@
+<%# <%= turbo_frame_tag "check_attendees" do %> 
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <tr><th>First name</th><th>Email</th><th>Action</th></tr>
+        <% if @check_attendee != nil %>
+        <% @check_attendee.each do |check| %>
+        <tr>
+          <td>
+              <%= check.first_name %> <%= check.last_name %>
+          </td>
+        
+        <td>
+            <%= check.email %>
+        </td>
+        <td>
+            <%= form_with model: @checkin, data: { turbo_frame: "print", turbo_action: "advance" } do |f| %>
+                <%= f.hidden_field :attendee_id, value: check.id %>
+                <%= f.hidden_field :checked_in, value: true %>
+                <%= f.submit "Check-in", class: "btn btn-success btn-lg" %>    
+            <% end %>
+        </td>
+        </tr>
+          <% end %>
+        <% end %>
+      </table> 
+    </div>   
+  </div>
+<%# <% end %> 

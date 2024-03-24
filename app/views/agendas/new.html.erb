@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "modal" do %>
+  <h1>New agenda</h1>
+
+  <%= render "form", agenda: @agenda %>
+
+  <br>
+
+  <%= link_to "Cancel", "#", data: {
+        controller: "modals",
+        action: "modals#close", class: "cancel-button"
+      } 
+  %>
+<% end %>

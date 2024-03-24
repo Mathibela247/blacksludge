@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  event_id: 1
+  user_id: 1
+  sent_date: 2023-06-20 12:04:07
+  invitation_response_id: 1
+  text_response: MyString
+  response_date: 2023-06-20 12:04:07
+
+two:
+  event_id: 1
+  user_id: 1
+  sent_date: 2023-06-20 12:04:07
+  invitation_response_id: 1
+  text_response: MyString
+  response_date: 2023-06-20 12:04:07

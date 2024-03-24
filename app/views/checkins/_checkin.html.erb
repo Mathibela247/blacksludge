@@ -1,0 +1,43 @@
+<div id="<%= dom_id checkin %>">
+  <div class="d-flex justify-content-start mb-4">
+    <div class="img_cont_msg">
+      <%= button_to attendee_path(checkin.attendee_id), id: 'print-button', class: "btn btn-primary rounded-circle fa fa-print" do %>
+      <span class="glyphicon glyphicon-print" aria-hidden="true">
+    <% end %> 
+		</div>
+		<div class="msg_cotainer"> 
+    <%= checkin.attendee.first_name %> <%= checkin.attendee.last_name %>
+    <span class="msg_time"><% if checkin.checked_in? == true %><%= checkin.attendee.created_at %> <% end %></span>
+
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  // Add a click event listener to the print button
+  document.getElementById('print-button').addEventListener('click', function() {
+    // For Chrome
+    if (navigator.userAgent.indexOf("Chrome") != -1) {
+      // Print without print preview
+      window.print();
+      setTimeout(function() {
+        window.close(); // Close the window after printing
+      }, 1000);
+    }
+
+    // For Firefox
+    else if (navigator.userAgent.indexOf("Firefox") != -1) {
+      // Use Firefox's specific print API
+      window.print();
+      setTimeout(function() {
+        window.close(); // Close the window after printing
+      }, 1000);
+    }
+
+    // For other browsers, fallback to default behavior
+    else {
+      window.print(); // Default print behavior (with print preview)
+    }
+      });
+</script>
+

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @setting_attendee %>
+
+<div>
+  <%= link_to "Edit this setting attendee", edit_setting_attendee_path(@setting_attendee) %> |
+  <%= link_to "Back to setting attendees", setting_attendees_path %>
+
+  <%= button_to "Destroy this setting attendee", @setting_attendee, method: :delete %>
+</div>

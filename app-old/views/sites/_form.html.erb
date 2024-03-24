@@ -1,0 +1,15 @@
+<%= search_form_for(@query, url: meetings_path, method: :get, class:"d-flex") do |f| %>
+    <%= f.search_field :meeting_id_eq,  class:"form-control me-2", placeholder:"Enter Meeting ID", id: "text_field" %>
+    <%= f.submit "Join Meeting", class:"btn btn-outline-success", id: "submitButtonId" %>
+<% end %>
+<script>
+    if($('#text_field').val() ==  "") 
+        $('#submitButtonId').attr('disabled', true);
+
+    $('#text_field').keyup(function(){
+        if($('#text_field').val() !=  "") 
+            $('#submitButtonId').attr('disabled', false);    
+    else
+        $('#submitButtonId').attr('disabled', true);   
+    });
+</script>

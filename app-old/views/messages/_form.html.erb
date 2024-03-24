@@ -1,0 +1,22 @@
+<%= form_with(model: message,
+    id: "message_form",
+    method: :post,
+    data: {
+        controller: "reset-form",
+        action: "turbo-submit-end->reset-form#clearInput"
+        },
+        class: "items-center") do |form| %> 
+       
+            <%= form.text_field :body, 
+            id: "chat-input",
+            class: "write_msg",
+            data: {
+                reset_form_target: "input"
+            },
+            placeholder: "Type a message..."
+            %>
+               
+            <%= form.button class:"msg_send_btn" do %>
+                <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+            <% end %>     
+<% end %>                

@@ -1,0 +1,16 @@
+
+<%= turbo_stream_from dom_id(current_user) %>
+<div class="mesgs"> 
+    <div class="msg_history">
+            <h2>Chat</h2>
+            <p class="text-center">Welcome <%= current_user.username %></p>
+        <div id="chatbox">
+            <%= render partial: "messages/chatbox", locals: { messages: @messages } %>
+        </div>
+        <div class="type_msg">
+            <div class="input_msg_write">
+                <%= render partial: "messages/form", locals: { message: @message } %>  
+            </div>
+        </div>      
+    </div>
+</div>

@@ -1,0 +1,2 @@
+module SelfCheckinHelper
+end

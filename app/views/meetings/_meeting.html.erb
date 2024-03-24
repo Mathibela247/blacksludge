@@ -1,0 +1,15 @@
+<div id="<%= dom_id meeting %>">
+  
+    <tbody>
+      <tr>
+        <th scope="row"><%= link_to meeting.meeting_id, meeting_path(meeting) %></th>
+        <td><%= meeting.meeting_url %></td>
+        <td><%= meeting.topic %></td>
+        <td><%= meeting.meeting_type %></td>
+        <td><%= meeting.start %></td>
+        <td><%= meeting.end %></td>
+        <td><%= meeting.duration %></td>
+      </tr>
+    </tbody>
+  
+</div>

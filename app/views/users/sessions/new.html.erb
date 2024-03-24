@@ -1,0 +1,48 @@
+<body class="d-flex h-100 text-center text-bg-dark">
+<main class="px-3">
+  <div class="col-lg-6 mb-5 mb-lg-0 position-relative"> 
+    <div class="card bg-glass">
+      <div class="card-body px-4 py-5 px-md-5">
+        <h2>Log in</h2>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <!-- Email input -->
+          <div class="form-outline mb-4">
+            <%= f.email_field :email, class: "form-control", id: "form2Example1" %>
+            <label class="form-label" for="form2Example1">Email address</label>
+          </div>
+
+          <!-- Password input -->
+          <div class="form-outline mb-4">
+            <%= f.password_field :password, class: "form-control", id: "form2Example1" %>
+            <label class="form-label" for="form2Example2">Password</label>
+          </div>
+
+          <!-- 2 column grid layout for inline styling -->
+          <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+              <!-- Checkbox -->
+              <% if devise_mapping.rememberable? %>
+              <div class="form-check">
+                <%= f.check_box :remember_me, class: "form-check-input", id: "form2Example31" %>
+                <label class="form-check-label" for="form2Example31"> Remember me </label>
+              </div>
+              <% end %>
+            </div>
+
+            <div class="col">
+              <!-- Simple link -->
+              <%= render "users/shared/links" %>
+            </div>
+          </div>
+
+          <!-- Submit button -->
+          <%= f.submit "Sign in", class: "btn btn-primary btn-block mb-4" %>
+        </div>
+        <% end %>
+      </div>  
+    </div>
+  </div>
+</main>
+</body>

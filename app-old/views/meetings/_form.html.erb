@@ -1,0 +1,76 @@
+<%= form_with(model: meeting) do |form| %>
+  <% if meeting.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+        <% meeting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-lg-6 mb-5 mb-lg-0 position-relative">  
+  <div class="card bg-glass">
+    <div class="card-body px-4 py-5 px-md-5">  
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="form-outline">
+            <%= form.label "Meeting ID", style: "display: block" %>
+            <%= form.text_field :meeting_id, class: "form-control" %>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">  
+          <div class="form-outline">
+            <%= form.label :meeting_type, style: "display: block" %>
+            <%= form.text_field :meeting_type, class: "form-control" %>
+          </div>
+        </div>  
+        <div class="col-md-6 mb-4"> 
+          <div class="form-outline">
+            <%= form.label :topic, style: "display: block" %>
+            <%= form.text_field :topic, class: "form-control" %>
+          </div>
+        </div>  
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="form-outline">
+            <%= form.label :start, style: "display: block" %>
+            <%= form.datetime_field :start, class: "form-control" %>
+          </div>
+        </div>  
+        <div class="col-md-6 mb-4">  
+          <div class="form-outline">
+            <%= form.label :end, style: "display: block" %>
+            <%= form.datetime_field :end, class: "form-control" %>
+          </div>
+        </div> 
+        <div class="col-md-6 mb-4">
+          <div class="form-outline">
+            <%= form.label :duration, style: "display: block" %>
+            <%= form.number_field :duration, class: "form-control" %>
+          </div> 
+        </div>
+      </div>    
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="form-outline">
+            <%= form.label :meeting_url, style: "display: block" %>
+            <%= form.text_field :meeting_url, class: "form-control" %>
+          </div>
+        </div>  
+        <div class="col-md-6 mb-4">
+          <div class="form-outline">
+            <%= form.label :agenda, style: "display: block" %>
+            <%= form.text_area :agenda, class: "form-control" %>
+          </div>
+        </div>  
+      </div>  
+      <div>
+        <%= form.submit class: "btn btn-primary btn-block mb-4" %>
+      </div>
+    </div>
+  </div>
+</div>      
+<% end %>

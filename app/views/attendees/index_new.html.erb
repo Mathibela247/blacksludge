@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>ADMIN DASHBOARD</h1>
+
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+      <%= form_tag attendees_path, method: :get, data: { controller: "search", turbo_frame: "search-results", turbo_action: "advance",
+      action: "input->search#submit:prevent" } do |form| %>
+        <%= text_field_tag "query", nil, class: "form-control", placeholder: "Search by First Name" %>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
+      </div>
+      <div class="col">
+      <%= turbo_frame_tag "attendees" do %> 
+        <%= link_to Checkin.all.count, checkins_url %>
+      <% end %>
+      </div>
+      <div class="col">
+        <%= link_to "New attendee", new_attendee_path, class: "btn btn-dark" %>
+      </div>
+    </div>  
+  </div>
+</div>    
+<!-- Rendering the checkin individuals -->
+<div id="checkins">
+          
+</div>
+        
+<!-- Rendering the new partial here -->
+<div class="col">
+    <%= turbo_frame_tag "search-results" do %>
+        <%= render "attendees", attendees: @attendees %>
+    <% end %> 
+</div>
+

@@ -1,0 +1,28 @@
+<%= form_with(model: election, id: "elections", data: { turbo_frame: "_top" }) do |form| %>
+  <% if election.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(election.errors.count, "error") %> prohibited this election from being saved:</h2>
+
+      <ul>
+        <% election.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label "Election reference", style: "display: block" %>
+    <%= form.text_field :names %>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_field :description %>
+    <%= form.label :available_seat, style: "display: block" %>
+    <%= form.text_field :available_seat %>
+    <%= form.hidden_field :meeting_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Dietary restrictions</h1>
+
+<div id="dietary_restrictions">
+  <% @dietary_restrictions.each do |dietary_restriction| %>
+    <%= render dietary_restriction %>
+    <p>
+      <%= link_to "Show this dietary restriction", dietary_restriction %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New dietary restriction", new_dietary_restriction_path %>

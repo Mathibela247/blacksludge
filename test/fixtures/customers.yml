@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  landline: MyString
+  mobile: MyString
+  industry_id: 1
+  company_registration: MyString
+  vat_number: MyString
+  purpose_of_application: MyString
+  main_contact: MyString
+  person_responsible_for_payment: MyString
+  platform_requirements: MyString
+
+two:
+  name: MyString
+  email: MyString
+  landline: MyString
+  mobile: MyString
+  industry_id: 1
+  company_registration: MyString
+  vat_number: MyString
+  purpose_of_application: MyString
+  main_contact: MyString
+  person_responsible_for_payment: MyString
+  platform_requirements: MyString

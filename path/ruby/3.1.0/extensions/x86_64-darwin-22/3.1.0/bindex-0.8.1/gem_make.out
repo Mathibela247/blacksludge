@@ -1,0 +1,15 @@
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/johannesm/.rvm/rubies/ruby-3.1.2/bin/ruby -I /Users/johannesm/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20230518-68362-gb6p85.rb extconf.rb
+creating Makefile
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20230518-68362-f9aup4/skiptrace/internal

@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Meetings</h1>
+
+<div id="meetings">
+  <div class="d-flex flex-column">
+      <div class="card">
+        <table class="table table-light table-hover">
+          <thead>
+            <tr>
+              <th scope="col"><strong>Meeting ID:</strong></th>
+              <th scope="col"><label for="basic-url" class="form-label">Meeting URL</label></th>
+              
+              <th scope="col"><strong>Topic:</strong></th>
+              <th scope="col"><strong>Meeting type:</strong></th>
+              <th scope="col"><strong>Start date:</strong></th>
+              <th scope="col"><strong>End date:</strong></th>
+              <th scope="col"><strong>Duration:</strong></th>
+            </tr>
+          </thead>
+        <% if @meetings.present? == true %>  
+          <% @meetings.each do |meeting| %>
+            <%= render meeting %>
+          <% end %>
+        <% else%>
+          
+          <% end %>  
+        </table>
+      </div>
+    </div>
+</div>
+
+<%= link_to "New meeting", new_meeting_path, class: "btn btn-primary" %>

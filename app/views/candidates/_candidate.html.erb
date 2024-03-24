@@ -1,0 +1,21 @@
+<div id="<%= dom_id candidate %>">
+<% @election = Election.find(candidate.election_id) 
+    # @votes = Vote.joins(:election).where(:votable_id => candidate.id, 'elections.id LIKE ?', candidate.election_id)
+    # @votes.each do |v|
+%>
+<%# <%= v.votable_id | :voter_id %>
+<%# <% end %> 
+  <table width="100%">
+    <tr>
+      <td style="border-bottom:1px dotted black"><strong>
+        <%= candidate.name %></strong></td>
+      <td style="text-align: right">
+        <% if @count != 0 %> 
+            <%= button_to upvote_candidate_path(candidate), class: "btn #{button_up_color(candidate, current_user)} btn-sm", method: :patch do %>
+                  <i class="fa fa-thumbs-up" aria-hidden="true"><%= @count %></i>
+            <% end %> 
+        <% end %>
+        </td>
+    </tr>      
+  </table><br>
+</div>

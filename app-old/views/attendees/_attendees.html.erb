@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "attendees" do %>
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <tr><th>First name</th><th>Email</th><th>Checked In</th><th>Action</th></tr>
+          <%= render attendees %>
+      </table> 
+    </div>   
+  </div>
+<% end %>

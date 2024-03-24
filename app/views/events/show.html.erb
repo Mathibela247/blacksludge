@@ -1,0 +1,19 @@
+<p style="color: green"><%= notice %></p>
+<div id="events">
+  <h1><%= @event.event_name %></h1>
+  <dl><strong>Type of Event:</strong></dl>
+  <dd><%= @event.event_type %></dd>
+  <dl><strong>Event Location:</strong></dl>
+  <dd><%= @event.location_name %></dd>
+  <dl><strong>Event Address:</strong></dl>
+  <dd><%= @event.location_address %></dd>
+  <dl><strong>Start Time:</strong> <%= @event.start_time %> -
+  <strong>End Time: </strong> <%= @event.end_time %></dl>
+  <dl><%= image_tag(url_for(@event.qrcode)) %></dl>
+</div>
+<table>
+  <tr><td><%= link_to "Back to events", events_path, class: "btn btn-dark" %></td><td><%= link_to "RSVP Now", new_event_invitation_rsvp_path(@event.id), class: "btn btn-primary" %></td>
+  <% if current_user.role? == 'admin' %>
+  <td><%= link_to "Edit this event", edit_event_path(@event), class: "btn btn-info" %></td><td><%= button_to "Destroy this event", @event, method: :delete, class: "btn btn-danger" %></td>
+  <% end %></tr>  
+</table>

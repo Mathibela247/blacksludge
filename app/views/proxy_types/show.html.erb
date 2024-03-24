@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @proxy_type %>
+
+<div>
+  <%= link_to "Edit this proxy type", edit_proxy_type_path(@proxy_type) %> |
+  <%= link_to "Back to proxy types", proxy_types_path %>
+
+  <%= button_to "Destroy this proxy type", @proxy_type, method: :delete %>
+</div>

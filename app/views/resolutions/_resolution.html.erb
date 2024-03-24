@@ -1,0 +1,44 @@
+
+<div id="<%= dom_id resolution %>">        
+  <table width="100%">
+    <tr>
+      <td>
+        <%= resolution.description %>
+      </td>
+      <td style="text-align: right"  width="30%">
+        <span class="caption">
+          <div class="row">
+            <div class="col">
+              <%= button_to upvote_resolution_path(resolution), class: "btn #{button_up_color(resolution, current_user)} btn-sm", method: :patch do %>
+                  <i class="fas fa-thumbs-up" aria-hidden="true"></i> 
+                  <%# <%= upvote_label(resolution, current_user) %> 
+              <% end %> 
+            </div>
+            <div class="col">
+              <%= button_to downvote_resolution_path(resolution), class: "btn #{button_down_color(resolution, current_user)} btn-sm", method: :patch do %> 
+                  <i class="fa fa-thumbs-down" aria-hidden="true"></i> 
+                  <%# <%= downvote_label(resolution, current_user) %>            
+              <% end %>
+            </div>
+            <div class="col">
+              <%= form_with(model: resolution, method: "PUT") do |f| %>
+                Abstain: <%= f.check_box :abstain, onchange: "this.form.requestSubmit()", prompt: true, id: "abstain"  %>
+                <%# <%= f.submit abstain_label(resolution, resolution.abstain),class: "btn btn-info" %> 
+              <% end %>
+            </div>
+          </div>  
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <% if current_user.role == "Admin"%>
+          Votes For: <%= resolution.cached_votes_up %><br/>
+          Votes Against: <%= resolution.cached_votes_down %><br/>          
+          Total votes: <%= resolution.cached_votes_total %><br/>
+          Total weighted: <%= resolution.cached_weighted_total %><br/>
+        <% end %>
+      </td>
+    </tr>
+  </table>  
+</div>

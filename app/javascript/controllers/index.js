@@ -1,0 +1,20 @@
+// Import and register all your controllers from the importmap under controllers/*
+
+import { application } from "controllers/application"
+
+// Eager load all controllers defined in the import map under controllers/**/*_controller
+import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
+eagerLoadControllersFrom("controllers", application)
+
+// import FormSubmissionController from "./form_submission_controller"
+// application.register("form-submission", FormSubmissionController)
+
+import FormSubmissionController from "./form_submission_controller"
+  application.register("form-submission", FormSubmissionController)
+
+import ModalController from "./modal_controller";
+  application.register("modal", ModalController);   
+
+// Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
+// import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
+// lazyLoadControllersFrom("controllers", application)

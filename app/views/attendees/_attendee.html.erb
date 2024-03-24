@@ -1,0 +1,14 @@
+<div id="<%= dom_id attendee %>"> 
+    <div class="row">
+      <div class="col"><p><span><%= attendee.first_name %></span> <%= attendee.last_name %><%= attendee.email %></p></div>
+     <div class="col">
+      <div class="input-group">
+        <%= form_with(model: @checkin, method: "POST") do |f| %>
+          <%= f.hidden_field :attendee_id, value: attendee.id %>
+          <%= f.hidden_field :checked_in, value: true %>
+          <%= f.submit "Checkin", class: "input-group-text send_btn" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+</div>

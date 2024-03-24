@@ -1,0 +1,35 @@
+<%= form_with(model: address, data: {controller: "form-reset"}) do |form| %>
+  <div data-controller="form-element" class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+    <%= form.button "Validate", formaction: new_customer_address_path, formmethod: :get, data: {form_element_target: "submitbtn", turbo_frame: :dynamic_fields} %>
+    <%= turbo_frame_tag :dynamic_fields do %>
+      <%= form.hidden_field :customer_id, value: params[:customer_id] %>
+      <div class="form-outline mb-4">
+        <%= form.label :address_type, style: "display: block" %>
+        <%= form.select :address_type, raw("<option>Billing</option><option>Residential</option><option>Postal</option>"), include_blank: true, class: "form-control form-control-lg" %>
+      </div>
+
+      <div class="form-outline mb-4">
+        <%= form.label :country, style: "display: block" %>
+        <%= form.select :country, CS.countries.invert, {include_blank: true}, {data: { action: "change->form-element#autosumbit"}, class: "form-control form-control-lg"} %>
+      </div>
+
+      <div class="form-outline mb-4">
+        <%= form.label :state, style: "display: block" %>
+        <%= form.select :state, address.state_opts.invert, {include_blank: true}, {data: { action: "change->form-element#autosumbit"}, class: "form-control form-control-lg"} %>
+      </div>
+
+      <div class="form-outline mb-4">
+        <%= form.label :city, style: "display: block" %>
+        <%= form.select :city, address.city_opts, {include_blank: true}, {class: "form-control form-control-lg"} %>
+      </div>
+
+      <div class="form-outline mb-4">
+        <%= form.label :address_line_1, style: "display: block" %>
+        <%= form.text_field :address_line_1, class: "form-control form-control-lg" %>
+      </div>
+    <% end %>
+    <div>
+        <%= form.submit %>
+      </div>
+  </div>
+<% end %>

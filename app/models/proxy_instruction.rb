@@ -1,0 +1,2 @@
+class ProxyInstruction < ApplicationRecord
+end

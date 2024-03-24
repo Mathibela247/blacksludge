@@ -1,0 +1,16 @@
+<div id="<%= dom_id attendee %>"> 
+    <div class="card">
+        <tr>
+            <td><%= attendee.first_name %> <%= attendee.last_name %></td>
+            <td> <%= attendee.email %></td> 
+                <%= form_with model: @checkin, id: "print_attendee", data: { controller: "form-submission", turbo_frame: "print_attendee", turbo_action: "advance" } do |f| %>
+                <%= f.hidden_field :attendee_id, value: attendee.id %>
+                    <td> 
+                    <div>
+                        <%= f.submit "Check-in", class: "btn btn-success btn-lg" %>
+                    </div>
+                    </td>  
+                <% end %>
+        </tr>
+    </div>  
+</div>    

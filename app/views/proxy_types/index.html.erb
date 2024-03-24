@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Proxy types</h1>
+
+<div id="proxy_types">
+  <% @proxy_types.each do |proxy_type| %>
+    <%= render proxy_type %>
+    <p>
+      <%= link_to "Show this proxy type", proxy_type %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New proxy type", new_proxy_type_path %>

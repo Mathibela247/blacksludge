@@ -1,0 +1,47 @@
+<%= form_with(model: event_invitation) do |form| %>
+  <% if event_invitation.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(event_invitation.errors.count, "error") %> prohibited this event_invitation from being saved:</h2>
+
+      <ul>
+        <% event_invitation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :event_id, style: "display: block" %>
+    <%= form.number_field :event_id, value: :event_invitation_id %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.number_field :user_id, value: current_user.id %>
+  </div>
+
+  <div>
+    <%= form.label :sent_date, style: "display: block" %>
+    <%= form.datetime_field :sent_date %>
+  </div>
+
+  <div>
+    <%= form.label :invitation_response_id, style: "display: block" %>
+    <%= form.number_field :invitation_response_id %>
+  </div>
+
+  <div>
+    <%= form.label :text_response, style: "display: block" %>
+    <%= form.text_field :text_response %>
+  </div>
+
+  <div>
+    <%= form.label :response_date, style: "display: block" %>
+    <%= form.datetime_field :response_date %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

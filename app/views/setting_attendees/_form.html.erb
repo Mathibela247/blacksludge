@@ -1,0 +1,47 @@
+<%= form_with(model: setting_attendee) do |form| %>
+  <% if setting_attendee.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(setting_attendee.errors.count, "error") %> prohibited this setting_attendee from being saved:</h2>
+
+      <ul>
+        <% setting_attendee.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :customer_id, style: "display: block" %>
+    <%= form.text_field :customer_id %>
+  </div>
+
+  <div>
+    <%= form.label :bgcolor, style: "display: block" %>
+    <%= form.text_field :bgcolor %>
+  </div>
+
+  <div>
+    <%= form.label :bgimage, style: "display: block" %>
+    <%= form.text_field :bgimage %>
+  </div>
+
+  <div>
+    <%= form.label :h1size, style: "display: block" %>
+    <%= form.text_field :h1size %>
+  </div>
+
+  <div>
+    <%= form.label :logo, style: "display: block" %>
+    <%= form.text_field :logo %>
+  </div>
+
+  <div>
+    <%= form.label :fontsize, style: "display: block" %>
+    <%= form.text_field :fontsize %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

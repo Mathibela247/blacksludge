@@ -1,0 +1,67 @@
+.simple-calendar {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #ccc;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
+  }
+
+  .day {
+    width: 14.285714285714286%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+    .wday-0 {
+        color: #f00;
+    }
+    .wday-1 {
+        color: #000;
+    }
+    .wday-2 {
+        color: #000;
+    }
+    .wday-3 {
+        color: #000;
+    }
+    .wday-4 {
+        color: #000;
+    }
+    .wday-5 {
+        color: #000;
+    }
+    .wday-6 {
+        color: #f00;
+    }
+  
+    .today {
+        color: rgb(0, 0, 255);
+    }
+    .past {
+        color: #000;
+    }
+    .future {
+        color: rgb(18, 203, 83);
+    }
+  
+    .start-date {
+        color: #000;
+    }
+  
+    .prev-month {
+        color: rgb(171, 169, 169);
+    }
+    .next-month { 
+        color: rgb(38, 183, 50);
+    }
+    .current-month {
+        color: #000;
+    }
+  
+    .has-events {
+        color: #f00;
+    }

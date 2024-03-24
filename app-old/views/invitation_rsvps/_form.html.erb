@@ -1,0 +1,35 @@
+<p>
+<% @event_name = Event.find(params["event_id"]) %>
+<strong>Customer Name:</strong> <%= current_user.customer.name  %><br />
+<strong>Event Name:</strong> <%= @event_name.event_name %>
+</p>
+<%= form_with(model: invitation_rsvp) do |form| %>
+  <% if invitation_rsvp.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(invitation_rsvp.errors.count, "error") %> prohibited this invitation_rsvp from being saved:</h2>
+
+      <ul>
+        <% invitation_rsvp.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div>
+    <%= form.label :invitation_response_id, style: "display: block" %>
+    <%= form.select :invitation_response_id, InvitationResponse.all.collect{ |p| [ p.name, p.id ] }, include_blank: true %>
+  </div>
+    <%= form.hidden_field :event_id, value: params["event_id"] %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+    <%= form.hidden_field :customer_id, value: current_user.customer_id %>
+
+  <div>
+    <%= form.label :dietary_restriction_id, style: "display: block" %>
+    <%= form.select :dietary_restriction_id, DietaryRestriction.all.collect{ |p| [ p.name, p.id ] }, include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

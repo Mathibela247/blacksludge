@@ -1,0 +1,22 @@
+<%= form_with(model: proxy_instruction) do |form| %>
+  <% if proxy_instruction.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(proxy_instruction.errors.count, "error") %> prohibited this proxy_instruction from being saved:</h2>
+
+      <ul>
+        <% proxy_instruction.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<% @meetings = Meeting.all %>
+<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Topic</th>
+            <th>Meeting_id</th>
+            <th>Customer</th>
+        </tr>
+    </thead>
+    <tfoot>
+        <tr>
+            <th>Topic</th>
+            <th>Meeting_id</th>
+            <th>Customer</th>
+        </tr>
+    </tfoot>
+    <tbody>
+        <% @meetings.each do |meeting| %>
+        <tr>
+            <th><%= meeting.topic %></th>
+            <th><%= meeting.meeting_id %></th>
+            <th><%= meeting.customer_id %></th>
+        </tr> 
+        <% end %>
+    </tbody> 
+</table> 

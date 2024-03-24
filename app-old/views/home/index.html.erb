@@ -1,0 +1,65 @@
+<% if user_signed_in? %>
+    <% if current_user.role.name != "Admin" %>
+      <p>Country: <%= current_user.country_name %></p>
+      <p>State/Province: <%= current_user.state_name %></p>
+      <p>City: <%= current_user.city %></p>
+      <%= link_to "Edit User Profile", edit_user_registration_path %><br />
+      <%= button_to "Sign_out", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+    <% else %>
+     
+      <div class="row">
+        <div class="col-9">
+          <div>
+            <div class="card">
+              <div class="card-header">
+                Calendar of Events
+              </div>
+              <div class="card-body">
+                <%= month_calendar(events: @events) do |date, events| %>
+                <div class="day">
+                  <%= date.day %>
+                </div>
+                  <% events.each do |event| %>
+                    <h5 class="card-header">
+                      <%= link_to event.event_name, event %>
+                    </h5>
+                    <div class="card-footer">
+                      <p class="card-text">
+                        From: <%= event.start_time.strftime('%A, %B %d, %Y at %I:%M %p') %>
+                      <p/>
+                      <p class="card-text">
+                        To: <%= event.end_time.strftime('%A, %B %d, %Y at %I:%M %p') %>
+                      <p/>
+                    </div>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>  
+        <div class="col-3">   
+          <div class="card text-center">
+              <div class="card-header">
+                Upcoming Events
+              </div>
+              <div class="card-body">
+                <% @events.each do |eve| %>
+                  <h5 class="card-title"><%= eve.event_name %></h5>
+                  <p class="card-text"><b>Event starts on the </b> <%= eve.start_time %> <b>upto</b> <%= eve.end_time %></p>
+                  <%= link_to "RSVP", new_event_invitation_path, class: "btn btn-primary" %>
+                <% end %>
+                </div>
+                <div class="card-footer text-body-secondary">
+                  2 days ago
+                </div>
+                
+            </div> 
+        </div>
+      </div>    
+   
+    <% end %>
+<% else %>
+  <p>Not Logged in.</p>
+  <%= link_to "Sign_up", new_user_registration_path %><br />
+  <%= link_to "Sign_in", new_user_session_path %>
+<% end %>

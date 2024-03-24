@@ -1,0 +1,2 @@
+module SettingAttendeesHelper
+end

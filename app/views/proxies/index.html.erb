@@ -1,0 +1,31 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Proxies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Proxy Giver Firstname</th>
+      <th>Proxy Giver Lastname</th>
+      <th>Proxy Giver Member Number</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proxies.each do |proxy| %>
+      <tr>
+        <td><%= proxy.firstname %></td>
+        <td><%= proxy.lastname %></td>
+        <td><%= proxy.member_number %></td>
+        <td><%= link_to 'Destroy', proxy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to "Assign a proxy", proxies_path, method: :create %>

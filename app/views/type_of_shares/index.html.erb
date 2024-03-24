@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Type of shares</h1>
+
+<div id="type_of_shares">
+  <% @type_of_shares.each do |type_of_share| %>
+    <%= render type_of_share %>
+    <p>
+      <%= link_to "Show this type of share", type_of_share %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New type of share", new_type_of_share_path %>

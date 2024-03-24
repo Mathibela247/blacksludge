@@ -1,0 +1,51 @@
+
+  <div class="card" style="width: 36rem;">
+    <div class="card-header msg_head">
+      <div class="d-flex bd-highlight">
+        <div class="user_info">
+          <span>New Attendee</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <%= form_with(model: attendee, turbo_frame: "attendees", turbo_action: "advance") do |form| %>
+        <% if attendee.errors.any? %>
+          <div style="color: red">
+            <h2><%= pluralize(attendee.errors.count, "error") %> prohibited this attendee from being saved:</h2>
+
+            <ul>
+              <% attendee.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <div class="row">
+        <div class="col">
+          <%= form.text_field :first_name, class:"form-control", placeholder:"First name" %>
+        </div>
+        <div class="col">
+          <%= form.text_field :last_name, class:"form-control", placeholder:"Last name" %>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col">
+          <%= form.text_field :email, class:"form-control", placeholder:"Email" %>
+        </div>
+        <div class="col">
+          <%= form.text_field :company, class:"form-control", placeholder:"Company Name" %>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col">
+          <%= form.text_field :mobile_number, class:"form-control", placeholder:"Mobile Number" %>
+        </div>
+        <div class="col">
+          <%= form.submit class:"btn btn-primary" %>
+        </div>
+      </div>  
+      <% end %>
+    </div>
+</div>

@@ -1,0 +1,2 @@
+class TypeOfShare < ApplicationRecord
+end

@@ -1,0 +1,25 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>CHECK IN ATTENDEES</h1>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col">
+      <%= form_with(url: attendees_path, method: "GET", data: { controller: "form-submission", turbo_frame: "attendees", turbo_action: "advance" }) do |form| %>
+        <%= form.label :query, "Search by First Name:" %>
+        <%= form.text_field :query, data: { action: "input->form-submission#search" } %>
+      <% end %>
+      </div>
+      <div class="col">
+        Total No of Attendees: <b><%= Checkin.all.count %></b>
+      </div>
+    </div>  
+  </div>
+</div>    
+<!-- Rendering the new partial here -->
+<turbo-frame id="attedees">
+
+  <%= render "attendees", attendees: @attendees %>
+ 
+</turbo-frame>
+<%= link_to "New attendee", new_attendee_path %>

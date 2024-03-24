@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Customer types</h1>
+
+<div id="customer_types">
+  <% @customer_types.each do |customer_type| %>
+    <%= render customer_type %>
+    <p>
+      <%= link_to "Show this customer type", customer_type %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New customer type", new_customer_type_path %>

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @dietary_restriction %>
+
+<div>
+  <%= link_to "Edit this dietary restriction", edit_dietary_restriction_path(@dietary_restriction) %> |
+  <%= link_to "Back to dietary restrictions", dietary_restrictions_path %>
+
+  <%= button_to "Destroy this dietary restriction", @dietary_restriction, method: :delete %>
+</div>

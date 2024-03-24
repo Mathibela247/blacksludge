@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @type_of_share %>
+
+<div>
+  <%= link_to "Edit this type of share", edit_type_of_share_path(@type_of_share) %> |
+  <%= link_to "Back to type of shares", type_of_shares_path %>
+
+  <%= button_to "Destroy this type of share", @type_of_share, method: :delete %>
+</div>

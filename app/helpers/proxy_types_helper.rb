@@ -1,0 +1,2 @@
+module ProxyTypesHelper
+end

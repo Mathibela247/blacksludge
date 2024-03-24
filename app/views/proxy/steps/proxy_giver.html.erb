@@ -1,0 +1,42 @@
+<h2>Proxy Submission</h2>
+<h4>Step 1/2</h4>
+<%= form_for @proxy, method: :put, url: wizard_path do |f| %>
+  <% if f.object.errors.any? %>
+    <div class="error_messages">
+      <% f.object.errors.full_messages.each do |error| %>
+        <p><%= error %></p>
+      <% end %>
+    </div>
+  <% end %>
+  <fieldset>
+    <legend>Proxy Giver</legend>
+    <div class="form-inputs">
+      <div class="row mb-3">
+        <label for="inputName" class="col-sm-2 col-form-label">First Name</label>
+        <div class="col-sm-3">
+          <%= f.text_field :firstname, :type=>"firstname", :class=>"form-control", :id=>"inputEmail3" %>
+        </div>
+        
+        <label for="inputName" class="col-sm-2 col-form-label">Last Name</label>
+        <div class="col-sm-3">
+          <%= f.text_field :lastname, :type=>"lastname", :class=>"form-control", :id=>"inputEmail3" %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputName" class="col-sm-2 col-form-label">Member Number</label>
+        <div class="col-sm-3">
+          <%= f.text_field :member_number, :type=>"member_number", :class=>"form-control", :id=>"inputEmail3" %>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputName" class="col-sm-2 col-form-label">Who are you appointing as your proxy?</label>
+        <div class="col-sm-3">
+          <%= f.text_field :customarytitle, :type=>"customarytitle", :class=>"form-control", :id=>"inputEmail3" %>
+        </div>
+      </div>
+
+    <div class="form-actions">
+      <%= link_to "Back", root_path %>
+      <%= f.submit 'Next Step', class: 'btn btn-primary' %>
+    </div>
+<% end %>

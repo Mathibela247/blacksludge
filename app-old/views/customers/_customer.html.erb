@@ -1,0 +1,53 @@
+<div id="<%= dom_id customer %>">
+<dl class="row">
+    <dt class="col-sm-3">Customer/Company Name:</dt>
+    <dd class="col-sm-9"><%= customer.name %></dd>
+  
+     <dt class="col-sm-3 alert-heading">Address:</dt>
+      <% if @customer_address.nil? == true %>
+        <%= link_to "Add Billing Address", new_customer_address_path(customer.id), data: { turbo_frame: 'modal' }, class: 'btn btn-xs btn-primary' %>
+      <% else %>
+          <dd class="col-sm-9">
+            <dl class="row">
+              <dd class="col-sm-4"><%= @customer_address.address_type %> Address</dd>
+              <dl class="row"><dt>Country:</dt><dd class="col-sm-8"> <%= @customer_address.country_name %></dd></dl>
+              <dl class="row"><dt>State:</dt><dd class="col-sm-8"> <%= @customer_address.state_name %></dd></dl>
+              <dl class="row"><dt>City:</dt><dd class="col-sm-8"> <%= @customer_address.city %></dd></dl>
+              <dl class="row"><dt>Address line 1:</dt><dd class="col-sm-8"> <%= @customer_address.address_line_1 %></dd></dl>
+            </dl>
+          </dd>
+      <% end %>  
+
+  <dl class="row">    
+    <dt class="col-sm-3">Contact Email:</dt>
+    <dd class="col-sm-9"><%= customer.email %></dd>
+
+    <dt class="col-sm-3">Contact Landline:
+    <dd class="col-sm-9"><%= customer.formatted_landline %></dd>
+
+    <dt class="col-sm-3">Contact Mobile:
+    <dd class="col-sm-9"><%= customer.formatted_mobile %></dd>
+
+    <dt class="col-sm-3">Industry:
+    <dd class="col-sm-9"><%= customer.industry.name %></dd>
+
+    <dt class="col-sm-3">SSN/ Company Reg:
+    <dd class="col-sm-9"><%= customer.company_registration %></dd>
+
+    <dt class="col-sm-3">Vat number:
+    <dd class="col-sm-9"><%= customer.vat_number %></dd>
+
+    <dt class="col-sm-3">Once Off/Subscription:
+    <dd class="col-sm-9"><%= customer.customer_type.name %></dd>
+
+    <dt class="col-sm-3">Person Responsible for Account (Main contact):
+    <dd class="col-sm-9"><%= customer.main_contact %></dd>
+
+    <dt class="col-sm-3">Person responsible for payment:
+    <dd class="col-sm-9"><%= customer.person_responsible_for_payment %></dd>
+
+    <dt class="col-sm-3">Special/Specific Platform requirements:
+    <dd class="col-sm-9"><%= customer.platform_requirements %></dd>
+  </dl>  
+</dl> 
+</div>

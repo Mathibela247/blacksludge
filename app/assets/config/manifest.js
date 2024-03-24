@@ -1,0 +1,10 @@
+//= link_tree ../images
+//= link_tree ../javascripts/sidebars .js
+//= link_tree ../../javascript .js
+//= link_tree ../../javascript/controllers .js
+//= link_tree ../../../vendor/javascript .js
+//= link sb-admin-2.css
+//= link sb-admin-2.js
+//= link jquery.js
+//= link jquery.easing.js
+//= link_tree ../builds

@@ -1,0 +1,6 @@
+<div class="alert alert-primary" role="alert">
+  <h5 class="card-title"><%= checkin.attendee.first_name %> <%= checkin.attendee.last_name %></h5>
+  <p><%= checkin.attendee.email %></p>
+  <p><% if checkin.checked_in? == true %>Checked in on the <% end %><%= checkin.attendee.created_at %></p>
+  <p><%= button_to "Print", checkin_path(checkin), data: { turbo_frame: 'print_attendee', turbo_action: "replace"}, class: "btn btn-dark" %></p>
+</div>

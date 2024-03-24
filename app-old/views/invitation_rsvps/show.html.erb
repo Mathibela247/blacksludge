@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @invitation_rsvp %>
+
+<div>
+  <%= link_to "Edit this invitation rsvp", edit_invitation_rsvp_path(@invitation_rsvp) %> |
+  <%= link_to "Back to invitation rsvps", invitation_rsvps_path %>
+
+  <%= button_to "Destroy this invitation rsvp", @invitation_rsvp, method: :delete %>
+</div>

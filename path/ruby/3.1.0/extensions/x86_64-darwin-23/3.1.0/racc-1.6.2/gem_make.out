@@ -1,0 +1,17 @@
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.6.2/ext/racc/cparse
+/Users/johannesm/.rbenv/versions/3.1.2/bin/ruby -I /Users/johannesm/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20240213-49034-7iuhkt.rb extconf.rb
+checking for rb_block_call()... yes
+checking for rb_ary_subseq()... yes
+creating Makefile
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.6.2/ext/racc/cparse
+make DESTDIR\= clean
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.6.2/ext/racc/cparse
+make DESTDIR\=
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.6.2/ext/racc/cparse
+make DESTDIR\= install
+/usr/local/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20240213-49034-wud5m5/racc

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @proxy_instruction %>
+
+<div>
+  <%= link_to "Edit this proxy instruction", edit_proxy_instruction_path(@proxy_instruction) %> |
+  <%= link_to "Back to proxy instructions", proxy_instructions_path %>
+
+  <%= button_to "Destroy this proxy instruction", @proxy_instruction, method: :delete %>
+</div>
