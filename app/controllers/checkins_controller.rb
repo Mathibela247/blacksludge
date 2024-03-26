@@ -1,10 +1,10 @@
 class CheckinsController < InheritedResources::Base
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   layout 'attendee'
 
-  # def show
-  #   @checkin = Checkin.find(params[:id])
-  # end
+  def show
+    @checkin = Checkin.find(params[:id])
+  end
 
   def create
     @checkin = Checkin.new(checkin_params)

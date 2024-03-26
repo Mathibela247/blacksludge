@@ -1,5 +1,9 @@
+require 'csv'
+
 class SettingAttendeesController < InheritedResources::Base
-  
+  # def new
+  # end
+
   def create
     if SettingAttendee.new
       @setting_attendee = SettingAttendee.create(setting_attendee_params)

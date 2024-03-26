@@ -1,11 +1,22 @@
-<%= turbo_frame_tag "modal" do %>
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="..." alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title"><%= @attendee.first_name %> <%= @attendee.last_name %></h5>
-      <p class="card-text">QR Code here</p>
-      
-    </div>
+<%# <%= turbo_frame_tag "modal" do %> 
+  <div class="modal">
+    <%# <div id="<%= dom_id print %>"> 
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= @checkin.attendee.first_name %> <%= @checkin.attendee.last_name %></h5>
+          <p class="card-text">QR Code here</p>
+          <%= button_to "#", method: :get, class: "btn btn-primary rounded-circle fa fa-print" do %>
+            <span class="glyphicon glyphicon-print" aria-hidden="true">
+          <% end %>
+        </div>
+      </div>
+      <div>
+      <%= link_to "Cancel", "#", data: {
+        controller: "modals",
+        action: "modal#close"
+      }, class: "cancel-button" %>
+      </div>
+    <%# </div> %>
   </div>
-
-<% end %>
+<%# <% end %>   

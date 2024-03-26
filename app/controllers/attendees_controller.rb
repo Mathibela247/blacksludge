@@ -1,5 +1,5 @@
 class AttendeesController < InheritedResources::Base
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   layout 'attendee'
 
   def show
@@ -30,22 +30,34 @@ class AttendeesController < InheritedResources::Base
 
   def create
     if Attendee.new
-      @attendee = Attendee.create(attendee_params)
-      respond_to do |format|
-        if @attendee.save
-          format.turbo_stream do
-            render turbo_stream: [
-              turbo_stream.update('new_attendee', partial: "attendees/form", locals: { attendee: Attendee.new })
-            ]
-          end
-          format.html { redirect_to attendees_path, notice: 'Successfully added Attendee.' }
-          format.json { render :show, status: :created, location: @@attendee}
-        else
-          format.html { render :new }
-          format.json { render json: @@attendee.errors, status: :unprocessable_entity }
+      if params[:csv_file].present?
+        attendees_data = 
+        params[:csv_file].read
+        CSV.parse(attendees_data, headers: true) do |row|
+          Attendee.create(first_name: row['first_name'], last_name: row['last_name'], email: row['email'], company: row['company'], mobile_number: row['mobile_number'])
         end
-      end
+        redirect_to attendees_path, notice: 'Attendees were successfully seeded.'
+      else
+        @attendee = Attendee.create(attendee_params)
+        respond_to do |format|
+          if @attendee.save
+            format.turbo_stream do
+              render turbo_stream: [
+                turbo_stream.update('new_attendee', partial: "attendees/form", locals: { attendee: Attendee.new })
+              ]
+            end
+            format.html { redirect_to attendees_path, notice: 'Successfully added Attendee.' }
+            format.json { render :show, status: :created, location: @@attendee}
+          else
+            format.html { render :new }
+            format.json { render json: @@attendee.errors, status: :unprocessable_entity }
+          end
+        end
     end
+      end
+
+    
+      
     if @checkin
       @checkin = Checkin.build
       respond_to do |format|

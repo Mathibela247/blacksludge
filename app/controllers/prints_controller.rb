@@ -2,7 +2,7 @@ class PrintsController < InheritedResources::Base
     layout 'attendee'
 
     def show
-        @attendee = Attendee.find(params[:id])
+        @checkin = Checkin.joins(:attendee).find(params[:id])
     end
 
     def index

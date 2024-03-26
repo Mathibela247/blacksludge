@@ -1,7 +1,17 @@
 <h1>New attendee</h1>
 
 <%= render "form", attendee: @attendee %>
-
+<br>
+<h1>Upload CSV to seed Attendees</h1>
+  <%= form_with url: attendees_path, method: :post, multipart: true do |form| %>
+    <div>
+      <%= form.label :csv_file, "CSV File", style: "display: block" %>
+      <%= form.file_field :csv_file %>
+    </div>
+    <div>
+      <%= form.submit "Upload CSV" %>
+    </div> 
+<% end %>
 <br>
 
 <div>

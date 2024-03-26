@@ -3,8 +3,12 @@
   <div class="col-lg-6 mb-5 mb-lg-0 position-relative"> 
     <div class="card bg-glass">
       <div class="card-body px-4 py-5 px-md-5">
-        <h2>Log in</h2>
-
+        <h1>Sign in</h1>
+        <div class="d-flex justify-content-end social_icon">
+					<span><i class="fas fa-facebook-square"></i></span>
+					<span><i class="fas fa-google-plus-square"></i></span>
+					<span><i class="fas fa-brands fa-x-twitter"></i></span>
+				</div>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <!-- Email input -->
