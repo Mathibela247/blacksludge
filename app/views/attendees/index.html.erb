@@ -15,8 +15,23 @@
         </div> 
         <div class="card-body contacts_body">
           <!-- Rendering the new partial here -->
+          <!--<div data-controller="content-loader" data-content-loader-url-value="<%= attendees_lazy_load_path %>">
+              <div class="spinner-border" role="status">
+                <span class="visually-hidden"></span>
+              </div>  
+              <span>Loading Attendees</span>
+                <%= render "attendees", attendees: @attendees %>
+            </div> -->
           <turbo-frame id="attendees">
-            <%= render "attendees", attendees: @attendees %>
+            <div data-controller="content-loader" data-content-loader-url-value="<%= attendees_lazy_load_path %>">
+              <div class="flex items-center mb-4">
+                <i class="fas fa-spinner fa-spin text-4x1 mr-2"></i>
+              </div>
+              <span>Loading Attendees...</span>
+              <div class="p-4 h-full">
+                <%= render "attendees", attendees: @attendees %>
+              </div>
+            </div>
           </turbo-frame>
         </div>
         <div class="card-footer"></div> 

@@ -104,3 +104,9 @@ gem "jquery-easing-rails", "~> 0.0.2"
 gem 'acts_as_votable'
 
 gem "view_component"
+
+gem 'rotp'
+
+gem 'mail'
+
+gem "tailwindcss-rails", "~> 2.3"

@@ -16,10 +16,11 @@ Rails.application.routes.draw do
       patch :upvote
     end
   end
-  
+  get 'greetings/index'
   get 'self_checkin/index'
   get 'dashboards/index'
   post 'self_checkin/print'
+  get "attendees/lazy_load", to: "attendees#lazy_load"
   # get '../javascript/sidebars'
   # get 'self_checkin/attendee'
   # get 'self_checkins/index'

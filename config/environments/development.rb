@@ -54,6 +54,12 @@ Rails.application.configure do
     authentication: :plain,
     enable_starttls_auto: true
   }
+
+  # config.active_record_encryption:
+  #   primary_key: Q3TJUKuOUGSZmgqaD2WZ72pQdg5Rikfn
+  #   deterministic_key: lYew1Q7BE98tDXdqytP3iwvJcu8dYulX
+  #   key_derivation_salt: 9REysw2kZuLybtKjtJsIZHg8cTd2DyMT
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

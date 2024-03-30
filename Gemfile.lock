@@ -274,6 +274,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.5)
+    rotp (6.3.0)
     rqrcode (2.2.0)
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
@@ -304,6 +305,10 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.1)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.3.0-x86_64-darwin)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.3.0-x86_64-linux)
       railties (>= 6.0.0)
     thor (1.2.2)
     tilt (2.1.0)
@@ -362,6 +367,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   jquery-easing-rails (~> 0.0.2)
+  mail
   mysql2
   phonelib
   puma (~> 5.0)
@@ -369,12 +375,14 @@ DEPENDENCIES
   rails (~> 7.0.4, >= 7.0.4.3)
   ransack (~> 3.2)
   redis (~> 4.0)
+  rotp
   rqrcode (~> 2.2)
   sass-rails
   selenium-webdriver
   simple_calendar
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.3)
   turbo-rails
   tzinfo-data
   view_component
@@ -385,4 +393,4 @@ RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.4.10
+   2.5.6

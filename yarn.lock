@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.8.tgz#6b79032e760a0899cd4204710beede972a3a185f"
   integrity sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==
 
+"@stimulus-components/content-loader@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@stimulus-components/content-loader/-/content-loader-5.0.0.tgz#93a64e2924dc2e8853ca023d6420f2123d00d816"
+  integrity sha512-5ib9PveLI9VEbUwJQpp76OW9Q1Fc8CY7Yo9iVOPTFScwtUWOQJCnwR836osLzYbEIDEEpCfBsCRcIdn9PBGT8A==
+
 anymatch@~3.1.2:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-3.1.3.tgz#790c58b19ba1720a84205b57c618d5ad8524973e"

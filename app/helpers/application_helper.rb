@@ -5,28 +5,28 @@ module ApplicationHelper
     end
 
     def change_background_color
-        @sa = SettingAttendee.find_by_customer_id(1)
+        @sa = SettingAttendee.find_by_customer_id(2)
         if @sa
             @bg_color = @sa.bgcolor
         end
     end
 
     def headersize
-        @sa = SettingAttendee.find_by_customer_id(1)
+        @sa = SettingAttendee.find_by_customer_id(2)
         if @sa
             @headersize = @sa.h1size
         end
     end
 
     def change_background_image
-        @sa = SettingAttendee.find_by_customer_id(1)
+        @sa = SettingAttendee.find_by_customer_id(2)
         if @sa
             @bg_image = @sa.bgimage
         end
     end
 
     def change_logo
-        @sa = SettingAttendee.find_by_customer_id(1)
+        @sa = SettingAttendee.find_by_customer_id(2)
         if @sa
             @logo = @sa.logo
         end    

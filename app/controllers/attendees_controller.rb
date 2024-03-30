@@ -28,6 +28,13 @@ class AttendeesController < InheritedResources::Base
     # end
   end
 
+  def lazy_load
+    # sleep(2)
+    @attendees = Attendee.left_outer_joins(:checkins).where(checkins: {attendee_id: nil})
+
+    render partial: "attendees/attendees", attendees: @attendees
+  end
+
   def create
     if Attendee.new
       if params[:csv_file].present?
