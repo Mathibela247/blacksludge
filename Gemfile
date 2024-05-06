@@ -87,7 +87,7 @@ gem "cssbundling-rails", "~> 1.1"
 
 gem "city-state", "~> 0.1.0"
 gem 'phonelib'
-gem 'activeadmin', github: 'activeadmin/activeadmin', branch: 'master'
+#gem 'activeadmin', github: 'activeadmin/activeadmin', branch: 'master'
 
 gem "icalendar", "~> 2.8"
 

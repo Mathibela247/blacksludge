@@ -1,0 +1,18 @@
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+/Users/johannesm/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-1n31vz sitelibdir\=./.gem.20240506-89656-1n31vz clean
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-1n31vz sitelibdir\=./.gem.20240506-89656-1n31vz
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-1n31vz sitelibdir\=./.gem.20240506-89656-1n31vz install
+/usr/local/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20240506-89656-1n31vz/racc
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-1n31vz sitelibdir\=./.gem.20240506-89656-1n31vz clean

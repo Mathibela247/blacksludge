@@ -1,0 +1,31 @@
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/psych-5.1.2/ext/psych
+/Users/johannesm/.rbenv/versions/3.1.2/bin/ruby extconf.rb
+checking for yaml.h... yes
+checking for yaml_get_version() in -lyaml... yes
+creating Makefile
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/psych-5.1.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-48vh4t sitelibdir\=./.gem.20240506-89656-48vh4t clean
+cd libyaml && /Library/Developer/CommandLineTools/usr/bin/make clean
+/bin/sh: line 0: cd: libyaml: No such file or directory
+make: [clean-so] Error 1 (ignored)
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/psych-5.1.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-48vh4t sitelibdir\=./.gem.20240506-89656-48vh4t
+compiling psych.c
+compiling psych_emitter.c
+compiling psych_parser.c
+compiling psych_to_ruby.c
+compiling psych_yaml_tree.c
+linking shared-object psych.bundle
+ld: warning: ignoring duplicate libraries: '-lyaml'
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/psych-5.1.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-48vh4t sitelibdir\=./.gem.20240506-89656-48vh4t install
+/usr/local/bin/ginstall -c -m 0755 psych.bundle ./.gem.20240506-89656-48vh4t
+
+current directory: /Users/johannesm/appspace/blacksludge/path/ruby/3.1.0/gems/psych-5.1.2/ext/psych
+make DESTDIR\= sitearchdir\=./.gem.20240506-89656-48vh4t sitelibdir\=./.gem.20240506-89656-48vh4t clean
+cd libyaml && /Library/Developer/CommandLineTools/usr/bin/make clean
+/bin/sh: line 0: cd: libyaml: No such file or directory
+make: [clean-so] Error 1 (ignored)
