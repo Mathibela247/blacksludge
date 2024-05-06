@@ -1,0 +1,16 @@
+<%= render layout: 'form' do |f| %>
+<h1>Tell us a little about yourself.</h1>
+  <div class="field">
+    <%= f.hidden_field :customer_id, value: session[:customer_id].to_i %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :identity_number %><br />
+    <%= f.text_field :identity_number %>
+  </div>
+<% end %>

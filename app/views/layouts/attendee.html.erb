@@ -26,7 +26,7 @@
         font-family: 'Numans', sans-serif;
         }
         h1{
-          color: <%= change_background_color() %>;
+          color: <%= change_h1_color() %>;
           font-size: <%= headersize() %>
         }
         .chat{
@@ -248,11 +248,13 @@
   </style>
 </head>
   <body>
+    
     <div class="container-fluid text-center">
       <div class="row justify-content-center">
         <%= turbo_frame_tag "modal" %>
         <h1 class="h3 mb-3 fw-normal"><%= image_tag("#{change_logo()}", width:"172", class: "mb-4") %></h1>
           <div class="row justify-content-center">
+            
             <%= yield %>
           </div>
       </div>    

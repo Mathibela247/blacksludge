@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  # resources :guests
+  resources :packages, only: [:index] do
+    resources :customers
+  end
+  resources :after_signups
+  devise_for :attendees
+  resources :industries
   resources :setting_attendees
   # namespace :proxy do
   #   get 'steps/show'
@@ -20,7 +27,7 @@ Rails.application.routes.draw do
   get 'self_checkin/index'
   get 'dashboards/index'
   post 'self_checkin/print'
-  get "attendees/lazy_load", to: "attendees#lazy_load"
+  # get "attendees/lazy_load", to: "attendees#lazy_load"
   # get '../javascript/sidebars'
   # get 'self_checkin/attendee'
   # get 'self_checkins/index'
@@ -56,16 +63,16 @@ Rails.application.routes.draw do
   get '/sidebars/index'
   get 'sites', to: 'sites#index'
   get 'meetings/index'
+
   resources :events do
-    resources :invitation_rsvps
-    member do
-      post :invite
-    end
+    get 'send_invites', on: :member
   end
-  root to: "sites#index"
+  
+  resources :guests
+
+  root to: "packages#index"
   resources :event_types
   resources :addresses
-  resources :industries
   resources :event_statuses
   resources :roles
   resources :customers do
@@ -74,6 +81,7 @@ Rails.application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  # devise_for :users
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
@@ -82,6 +90,7 @@ Rails.application.routes.draw do
     sign_out: '/users/sign_out',
     # after_database_authentication: '/users/after-database-authentications'
   }
+  resources :users, only: [:new, :create, :update]
   resources :proxies, only: [:new, :create, :index, :destroy] do
     resources :steps, only: [:show, :update], controller: 'proxy/steps'
   end

@@ -4,31 +4,36 @@ module ApplicationHelper
         render "checkins/print", attendee: @attendee
     end
 
-    def change_background_color
-        @sa = SettingAttendee.find_by_customer_id(2)
-        if @sa
+    def change_h1_color
+        a = Attendee.first
+        @sa = SettingAttendee.find_by_customer_id(a.customer_id)
+        if @sa.bgcolor.present?
             @bg_color = @sa.bgcolor
         end
     end
 
     def headersize
-        @sa = SettingAttendee.find_by_customer_id(2)
-        if @sa
+        a = Attendee.first
+        @sa = SettingAttendee.find_by_customer_id(a.customer_id)
+        if @sa.h1size.present?
             @headersize = @sa.h1size
         end
     end
 
     def change_background_image
-        @sa = SettingAttendee.find_by_customer_id(2)
-        if @sa
-            @bg_image = @sa.bgimage
+        a = Attendee.first
+        @sa = SettingAttendee.find_by_customer_id(a.customer_id)
+        if @sa.bgimage.present?
+           @bg_image = @sa.bgimage
         end
     end
 
     def change_logo
-        @sa = SettingAttendee.find_by_customer_id(2)
-        if @sa
+        g = Guest.first
+        a = Attendee.first
+        @sa = SettingAttendee.find_by_customer_id(g.customer_id)
+        if @sa.logo.present?
             @logo = @sa.logo
-        end    
+        end  
     end
 end

@@ -5,7 +5,7 @@ ActiveAdmin.register Event do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :event_name, :event_url, :event_type, :location_name, :location_address, :customer_id, :start_time, :end_time
+  permit_params :event_name, :event_url, :description, :event_type, :location_name, :location_address, :customer_id, :start_time, :end_time
   #
   # or
   #

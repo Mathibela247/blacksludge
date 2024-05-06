@@ -3,8 +3,10 @@ class Customer < ApplicationRecord
     has_many :events
     has_many :setting_attendee
     has_many :invitation_rsvps
+    has_many :users
     belongs_to :industry
     belongs_to :customer_type
+    belongs_to :package
 
     validates :mobile, phone: { possible: true, allow_blank: true }
     validates :landline, phone: { possible: true, allow_blank: true }

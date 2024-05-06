@@ -1,0 +1,33 @@
+
+    <div class="container">
+      <h5 class="text-center pricing-table-subtitle">Available Packages</h5>
+      <h1 class="text-center pricing-table-title">Pricing Table</h1>
+      <div class="row">
+        <% @packages.each do |package| %>
+          <div class="col-md-4">
+            <div class="card pricing-card pricing-plan-basic">
+              <div class="card-body">
+                <i class="mdi mdi-cube-outline pricing-plan-icon"></i>
+                <p class="pricing-plan-title"><%= package.name %></p>
+                <h3 class="pricing-plan-cost ml-auto">Price: R<%= package.price %>/month</h3>
+                <ul class="pricing-plan-features">
+                  <% package.features.each do |feature| %>
+                  <li><%= feature %></li>
+                  <% end %>
+                </ul>
+                
+                <%= link_to "Purchase", new_package_customer_path(package), class: "btn pricing-plan-purchase-btn" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <% if user_signed_in? %>
+      <% else %>
+      <div class="row">
+        <p>Already have an Account?
+        <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+        <p>
+      </div>
+      <% end %>
+    </div>

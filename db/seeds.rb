@@ -6,19 +6,22 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 #AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?Industry.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
-User.create(username: "John",
-    email: "john@doe.com",
-    password: "password",
-    password_confirmation: "password")
-User.create(username: "Jane",
-    email: "jane@doe.com",
-    password: "password",
-    password_confirmation: "password")    
+# User.create(username: "John",
+#     email: "john@doe.com",
+#     password: "password",
+#     password_confirmation: "password")
+# User.create(username: "Jane",
+#     email: "jane@doe.com",
+#     password: "password",
+#     password_confirmation: "password")    
 
 #Create 50 Messages
-50.times do
-    Message.create(
-        body: Faker::Lorem.sentence(word_count: 10),
-        user_id: rand(1...3)
-    )
-end
+# 50.times do
+#     Message.create(
+#         body: Faker::Lorem.sentence(word_count: 10),
+#         user_id: rand(1...3)
+#     )
+# end
+Package.create(name: 'Basic',price: 29.99, features: ['Basic Support', '100 MB Storage'])
+Package.create(name: 'Pro',price: 59.99, features: ['Priority Support', '1 GB Storage','Advanced Analytics'])
+Package.create(name: 'Enterrprise',price: 199.99, features: ['Dedicated Support', 'Unlimited Storage', 'Custom Integrations'])

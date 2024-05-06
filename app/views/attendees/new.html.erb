@@ -1,19 +1,29 @@
-<h1>New attendee</h1>
-
-<%= render "form", attendee: @attendee %>
-<br>
-<h1>Upload CSV to seed Attendees</h1>
-  <%= form_with url: attendees_path, method: :post, multipart: true do |form| %>
-    <div>
-      <%= form.label :csv_file, "CSV File", style: "display: block" %>
-      <%= form.file_field :csv_file %>
+<div class="card" style="width: 36rem;">
+  <%= render "form", attendee: @attendee %>
+  <br>
+ 
+    <div class="card-header msg_head">
+      <div class="d-flex bd-highlight">
+        <div class="user_info">
+          <span>Upload a list of Attendees</span>
+        </div>
+      </div>
     </div>
+    
+    <div class="card-body">
+      <%= form_with url: attendees_path, method: :post, multipart: true do |form| %>
+      <div class="row">
+        <div class="col">
+          <%= form.label :csv_file, style: "display: block" %>
+          <%= form.file_field :csv_file %>
+        </div>
+        <div class="col">
+          <%= form.submit "Upload attendees", class: "btn btn-primary" %>
+        </div> 
+      </div>  
+      <% end %>
+    </div>  
     <div>
-      <%= form.submit "Upload CSV" %>
-    </div> 
-<% end %>
-<br>
-
-<div>
-  <%= link_to "Back to attendees", attendees_path %>
+      <%= link_to "Back to attendees", attendees_path %>
+    </div>
 </div>

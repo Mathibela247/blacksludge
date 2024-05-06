@@ -41,19 +41,21 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_caching = false
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    port: 587,
-    address: 'email-smtp.eu-central-1.amazonaws.com',
-    user_name: Rails.application.credentials.dig(:aws_ses, :access_key_id),
-    password: Rails.application.credentials.dig(:aws_ses, :secret_access_key),
-    authentication: :plain,
-    enable_starttls_auto: true
-  }
+  address:         'smtp.gmail.com',
+  port:            587,
+  domain:          'blacksludge.co.za',
+  user_name:       'mathibela.johannes@gmail.com',
+  password:        'poasyifgnddqzylm',
+  authentication:  'plain',
+  enable_starttls: true,
+  open_timeout:    5,
+  read_timeout:    5 }
 
   # config.active_record_encryption:
   #   primary_key: Q3TJUKuOUGSZmgqaD2WZ72pQdg5Rikfn

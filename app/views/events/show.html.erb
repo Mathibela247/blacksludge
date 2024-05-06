@@ -1,19 +1,77 @@
-<p style="color: green"><%= notice %></p>
-<div id="events">
-  <h1><%= @event.event_name %></h1>
-  <dl><strong>Type of Event:</strong></dl>
-  <dd><%= @event.event_type %></dd>
-  <dl><strong>Event Location:</strong></dl>
-  <dd><%= @event.location_name %></dd>
-  <dl><strong>Event Address:</strong></dl>
-  <dd><%= @event.location_address %></dd>
-  <dl><strong>Start Time:</strong> <%= @event.start_time %> -
-  <strong>End Time: </strong> <%= @event.end_time %></dl>
-  <dl><%= image_tag(url_for(@event.qrcode)) %></dl>
+<div class="container">
+  <p style="color: green"><%= notice %></p>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card pricing-card pricing-plan-basic">
+          <div class="card-body">
+            <i class="mdi mdi-calendar-clock mdi-24px"></i>
+            <h5 class="text-center pricing-table-subtitle"><%= @event.event_type.name %></h5>
+            <h1 class="text-center pricing-table-title"><%= @event.event_name %></h1>
+              <dl><strong>Event Location:</strong></dl>
+              <dd><%= @event.location_name %></dd>
+              <dl><strong>Event Address:</strong></dl>
+              <dd><%= @event.location_address %></dd>
+              <dl><strong>Start Time:</strong> <%= @event.start_time %></dl>
+              <dl><strong>End Time: </strong> <%= @event.end_time %></dl>
+              <dl><%= image_tag(url_for(@event.qrcode)) %></dl>
+              <table>
+                <tr>
+                  <td><%= link_to "Back to events", events_path, class: "btn btn-dark" %></td>
+                  <% if current_user.role? == 'admin' %>
+                    <td><%= link_to "Edit this event", edit_event_path(@event), class: "btn btn-info" %></td><td><%= button_to "Destroy this event", @event, method: :delete, class: "btn btn-danger" %></td>
+                  <% end %>
+                </tr>  
+              </table>
+          </div>  
+        </div>  
+      </div>
+
+      <div class="col-md-4">
+          <div class="card pricing-card pricing-plan-basic">
+            <div class="card-body">
+                <i class="mdi mdi-account-box-outline mdi-24px"></i>
+                <p class="pricing-plan-title">Capture</p>
+                <h3 class="pricing-plan-cost ml-auto">New Guest</h3>
+                <ul class="pricing-plan-features">
+                  <% session[:event_id] = @event.id %>
+                  <%= render partial: "guests/form", locals: { guest: Guest.new } %>
+                </ul>
+            </div>
+          </div>
+          <br>
+          <div class="card pricing-card pricing-plan-basic">
+            <div class="card-body">
+              <i class="mdi mdi-upload mdi-24px"></i>
+              <p class="pricing-plan-title">Upload</p>
+              <h3 class="pricing-plan-cost ml-auto">Guest List</h3>
+              <ul class="pricing-plan-features">
+                <%= render partial: "guests/guest_form", locals: { guest: Guest.new } %>
+              </ul>
+            </div>           
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card pricing-card pricing-plan-basic">
+            <div class="card-body">
+              <i class="mdi mdi-account-box-outline mdi-24px"></i>
+              <p class="pricing-plan-title">Only for this particular event</p>
+              <h3 class="pricing-plan-cost ml-auto">Guest List</h3>
+              <ul class="pricing-plan-features">
+                <turbo-frame id="guests"> 
+                  <% @guests.each do |g| %>
+                    <%= form_with(method: :post) do |form| %>
+                      <li><%= g.email %></li>
+                    <% end %>   
+                  <% end %></p>
+                  <p><%= link_to 'Send Invites', send_invites_event_path(@event), method: :post, class: "btn btn-primary btn-sm", data: { confirm: 'Are you sure you want to send invitations?' } %></p>
+                </turbo-frame> 
+                total guests: <%= @total_guests %>
+              </ul>
+            </div>  
+          </div>
+      </div>
+        
+    </div>  
 </div>
-<table>
-  <tr><td><%= link_to "Back to events", events_path, class: "btn btn-dark" %></td><td><%= link_to "RSVP Now", new_event_invitation_rsvp_path(@event.id), class: "btn btn-primary" %></td>
-  <% if current_user.role? == 'admin' %>
-  <td><%= link_to "Edit this event", edit_event_path(@event), class: "btn btn-info" %></td><td><%= button_to "Destroy this event", @event, method: :delete, class: "btn btn-danger" %></td>
-  <% end %></tr>  
-</table>
+

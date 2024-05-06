@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_05_110627) do
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -92,6 +92,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.string "mobile_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "customer_id"
+    t.string "invitation_token"
+    t.datetime "invitation_created_at"
+    t.datetime "invitation_sent_at"
+    t.datetime "invitation_accepted_at"
+    t.integer "invitation_limit"
+    t.string "invited_by_type"
+    t.bigint "invited_by_id"
+    t.integer "invitations_count", default: 0
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_attendees_on_email", unique: true
+    t.index ["invitation_token"], name: "index_attendees_on_invitation_token", unique: true
+    t.index ["invited_by_id"], name: "index_attendees_on_invited_by_id"
+    t.index ["invited_by_type", "invited_by_id"], name: "index_attendees_on_invited_by"
   end
 
   create_table "candidates", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -132,6 +146,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_type_id"
+    t.integer "package_id"
   end
 
   create_table "dietary_restrictions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -179,6 +194,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "description"
   end
 
   create_table "events", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -194,6 +210,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.integer "user_id"
     t.string "description"
     t.integer "event_type_id"
+  end
+
+  create_table "guests", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "mobile_number"
+    t.integer "event_id"
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "update_token"
+    t.string "rsvp_status"
+    t.index ["update_token"], name: "index_guests_on_update_token", unique: true
   end
 
   create_table "industries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -230,7 +260,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.string "topic"
     t.text "agenda"
     t.integer "duration"
-    t.integer "user_id"
   end
 
   create_table "messages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -239,6 +268,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "packages", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.decimal "price", precision: 10
+    t.text "features"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "proxies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -317,12 +354,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sites", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "index"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "type_of_shares", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -345,7 +376,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_071910) do
     t.string "state"
     t.string "city"
     t.integer "customer_id"
-    t.integer "role_id"
+    t.integer "role_id", default: 0
     t.string "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"

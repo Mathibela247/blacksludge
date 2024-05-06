@@ -46,44 +46,54 @@
   <div class="row gx-lg-5 align-items-center mb-5">
     <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
         <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-          Register<br />
-          <span style="color: hsl(218, 81%, 75%)">New Customer</span>
+          Open<br />
+          <span style="color: hsl(218, 81%, 75%)">New Account</span>
         </h1>
-        <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-          Temporibus, expedita iusto veniam atque, magni tempora mollitia
-          dolorum consequatur nulla, neque debitis eos reprehenderit quasi
-          ab ipsum nisi dolorem modi. Quos?
-        </p>
+          <div class="col-md-4">
+          <div class="card pricing-card pricing-plan-basic">
+            <div class="card-body">
+              <i class="mdi mdi-cube-outline pricing-plan-icon"></i>
+              <p class="pricing-plan-title"><%= @package.name %></p>
+              <h3 class="pricing-plan-cost ml-auto">Price: R<%= @package.price %>/month</h3>
+              <ul class="pricing-plan-features">
+                <% @package.features.each do |feature| %>
+                <li><%= feature %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
     </div>
-
+    
     <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
       <div class="card bg-glass">
         <div class="card-body px-4 py-5 px-md-5">
           
-          <%= form_with(model: customer) do |form| %>
-            <% if customer.errors.any? %>
+          <%= form_with(model: [@package, @customer]) do |form| %>
+            <% if @customer.errors.any? %>
               <div style="color: red">
-                <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+                <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
 
                 <ul>
-                  <% customer.errors.each do |error| %>
+                  <% @customer.errors.each do |error| %>
                     <li><%= error.full_message %></li>
                   <% end %>
                 </ul>
               </div>
             <% end %>
             <div class="row">
+              <h1 class="my-5 display-5 fw-bold ls-tight">Company Details</h1>
+              <%# <%= form.text_field :package_id, value: @package.id %> 
               <div class="col-md-6 mb-4">
                 <div class="form-outline mb-4">
-                  <%= form.label :name, style: "display: block" %>
+                  <%= form.label "Company Name", style: "display: block" %>
                   <%= form.text_field :name, class: "form-control form-control-lg" %>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
                 <div class="form-outline mb-4">
                   <%= form.label :customer_type_id, style: "display: block" %>
-                  <%= form.select :customer_type_id, CustomerType.all.collect{ |p| [ p.name, p.id ] }, include_blank: true, class: "form-control form-control-lg" %>
+                  <%= form.select :customer_type_id, CustomerType.all.collect{ |p| [ p.name, p.id ] }, {include_blank: true}, class: "form-control form-control-lg" %>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
@@ -111,7 +121,7 @@
               <div class="col-md-6 mb-4">
                 <div class="form-outline mb-4">
                   <%= form.label :industry_id, style: "display: block" %>
-                  <%= form.select :industry_id, Industry.all.collect{ |p| [ p.name, p.id ] }, include_blank: true, class: "form-control form-control-lg" %>
+                  <%= form.select :industry_id, Industry.all.collect{ |p| [ p.name, p.id ] }, {include_blank: true}, class: "form-control form-control-lg" %>
                 </div>
               </div>
               <div class="col-md-6 mb-4">
@@ -149,16 +159,13 @@
                 </div>
               </div>  
             </div>
-
           <div class="form-outline mb-4">
             <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-black inline-block font-medium cursor-pointer"  %>
           </div>
           <% end %>
-
         </div>  
       </div>
     </div>
   </div>
 </div>
-
 </section>

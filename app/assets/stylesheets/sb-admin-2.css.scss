@@ -14,7 +14,6 @@
   // @import 'bootstrap/bootstrap';
   @import 'bootstrap/variables';
   @import 'bootstrap/mixins';
-  @import 'style';
   @import "font-awesome";
   @import 'cover';
   @import 'messaging';
@@ -76,7 +75,8 @@ body {
   line-height: 1.5;
   color: #858796;
   text-align: left;
-  background-color: #fff;
+  background-image: url('<%= change_background_image() %>');
+  height: 100vh;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {

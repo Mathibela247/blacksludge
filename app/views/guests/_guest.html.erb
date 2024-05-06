@@ -1,0 +1,50 @@
+<div id="<%= dom_id guest %>">
+  <div class="container">
+    <h5 class="text-center pricing-table-subtitle"><%= guest.event.start_time %> to <%= guest.event.end_time %></h5>
+    <h1 class="text-center pricing-table-title"><strong><%= guest.event.event_name %></strong></h1>
+    <h5 class="text-center pricing-table-subtitle"><%= guest.event.location_name %></h5>
+    <h5 class="text-center pricing-table-subtitle"><%= guest.event.location_address %></h5>
+    <div class="row">
+      <div class="col-md-4">  
+        <div class="card pricing-card pricing-plan-basic">
+          <div class="card-body">
+            <i class="mdi mdi-calendar-clock mdi-24px"></i>
+            <h5 class="text-center pricing-table-subtitle">Personal Details</h5>
+              <p class="my-5">
+                <strong class="block mb-1">Fullname:</strong>
+                <%= guest.fullname %>
+              </p>
+
+              <p class="my-5">
+                <strong class="block mb-1">Email:</strong>
+                <%= guest.email %>
+              </p>
+
+              <p class="my-5">
+                <strong class="block mb-1">Mobile number:</strong>
+                <%= guest.mobile_number %>
+              </p>
+
+              <% if action_name != "show" %>
+                <%= link_to "Show this guest", guest, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+                <%= link_to "Edit this guest", edit_guest_path(guest), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+                <hr class="mt-6">
+              <% end %>
+          </div> 
+        </div>   
+      </div>
+      <div class="col-md-4">  
+        <div class="card pricing-card pricing-plan-basic">
+          <div class="card-body">
+            <i class="mdi mdi-calendar-clock mdi-24px"></i>
+            <h5 class="text-center pricing-table-subtitle">RSVP</h5>
+            <p class="my-5">
+                <strong class="block mb-1">RSVP:</strong>
+                <%= guest.rsvp_status %>
+            </p>
+          </div>
+        </div>
+      </div>      
+
+  </div>
+</div>

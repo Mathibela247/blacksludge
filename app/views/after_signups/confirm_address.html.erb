@@ -1,0 +1,16 @@
+<%= render layout: 'form' do |f| %>
+<h1>Where can we find you?</h1>
+  <div class="field">
+    
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+  </div>
+  <div class="field">
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </div>
+  <div class="field">
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </div>
+<% end %>

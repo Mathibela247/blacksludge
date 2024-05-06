@@ -1,0 +1,23 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <h1 class="font-bold text-4xl">New guest</h1>
+
+  <%= render "form", guest: @guest %>
+
+  <%= form_with url: guests_path, method: :post, multipart: true do |form| %>
+    <div class="row">
+        <div class="col">
+            <%= form.label :csv_file, style: "display: block" %>
+            <%= form.file_field :csv_file, class:"form-control" %>
+            <%= form.hidden_field :event_id, value: session[:event_id] %>
+            <%= form.hidden_field :customer_id, value: current_user.customer_id %>
+        </div>
+    </div>  
+    <br>
+    <div class="row">
+        <div class="col">
+            <%= form.submit "Upload guests", class: "btn btn-primary" %>
+        </div> 
+    </div>  
+  <% end %>
+  <%= link_to "Back to guests", guests_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+</div>

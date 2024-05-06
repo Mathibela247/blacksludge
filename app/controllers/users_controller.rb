@@ -1,7 +1,19 @@
 class UsersController < InheritedResources::Base
-  
+  def index
+  end
+
   def new
-    @user = User.new user_params
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(params[:user])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to after_signups_path(:confirm_profile)
+    else
+      render :new
+    end
   end
 
   private

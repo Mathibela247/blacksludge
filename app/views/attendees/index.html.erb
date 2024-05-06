@@ -14,24 +14,8 @@
           </div> 
         </div> 
         <div class="card-body contacts_body">
-          <!-- Rendering the new partial here -->
-          <!--<div data-controller="content-loader" data-content-loader-url-value="<%= attendees_lazy_load_path %>">
-              <div class="spinner-border" role="status">
-                <span class="visually-hidden"></span>
-              </div>  
-              <span>Loading Attendees</span>
-                <%= render "attendees", attendees: @attendees %>
-            </div> -->
           <turbo-frame id="attendees">
-            <div data-controller="content-loader" data-content-loader-url-value="<%= attendees_lazy_load_path %>">
-              <div class="flex items-center mb-4">
-                <i class="fas fa-spinner fa-spin text-4x1 mr-2"></i>
-              </div>
-              <span>Loading Attendees...</span>
-              <div class="p-4 h-full">
-                <%= render "attendees", attendees: @attendees %>
-              </div>
-            </div>
+              <%= render "attendees", attendees: @attendees %>
           </turbo-frame>
         </div>
         <div class="card-footer"></div> 
@@ -40,7 +24,9 @@
     <div class="col-md-8 col-xl-5 chat">
       <div class="card-body contacts_body">
         <div class="row justify-content-center">
+          <div class="card" style="width: 36rem;">
           <%= render partial: "attendees/form", locals: { attendee: Attendee.new } %>
+          </div>
         </div>
         </div>
     </div> 

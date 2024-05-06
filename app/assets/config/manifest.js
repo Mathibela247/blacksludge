@@ -4,6 +4,8 @@
 //= link_tree ../../javascript/controllers .js
 //= link_tree ../../../vendor/javascript .js
 //= link sb-admin-2.css
+//= link pricing-plan.css
+//= link pricing-plan.css.map
 //= link sb-admin-2.js
 //= link jquery.js
 //= link jquery.easing.js

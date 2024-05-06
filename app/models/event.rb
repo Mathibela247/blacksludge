@@ -3,8 +3,8 @@ class Event < ApplicationRecord
 
     belongs_to :customer
     belongs_to :user
-    has_many :event_type
-    has_many :invitation_rsvps
+    belongs_to :event_type
+    has_many :guests
     has_one_attached :qrcode, dependent: :destroy
 
     before_commit :generate_qrcode, on: :create

@@ -12,13 +12,13 @@ class User < ApplicationRecord
   
     # state has to be valid when changing a country
     # validates :country, presence: true
-    validates :state, inclusion: { in: ->(record) { record.states.keys }, allow_blank: true }
-    validates :state, presence: { if: ->(record) { record.states.present? } }
+    # validates :state, inclusion: { in: ->(record) { record.states.keys }, allow_blank: true }
+    # validates :state, presence: { if: ->(record) { record.states.present? } }
   
     # some countries don't have any cities, like Vatican.
     # city has to be valid when changing a country/state
-    validates :city, inclusion: { in: ->(record) { record.cities }, allow_blank: true }
-    validates :city, presence: { if: ->(record) { record.cities.present? } }
+    # validates :city, inclusion: { in: ->(record) { record.cities }, allow_blank: true }
+    # validates :city, presence: { if: ->(record) { record.cities.present? } }
      
    belongs_to :customer, optional: true
    belongs_to :role, optional: true
@@ -33,24 +33,24 @@ class User < ApplicationRecord
     "#{first_name.capitalize} #{last_name.capitalize}"  
   end
 
-  def countries
-    CS.countries.with_indifferent_access
-  end
+  # def countries
+  #   CS.countries.with_indifferent_access
+  # end
        
-  def states
-    CS.states(country).with_indifferent_access
-  end
+  # def states
+  #   CS.states(country).with_indifferent_access
+  # end
        
-  def cities
-    CS.cities(state, country) || []
-  end     
+  # def cities
+  #   CS.cities(state, country) || []
+  # end     
   
-  def country_name
-    countries[country]
-  end
+  # def country_name
+  #   countries[country]
+  # end
 
-  def state_name
-    states[state]
-  end
+  # def state_name
+  #   states[state]
+  # end
          
 end

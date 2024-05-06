@@ -1,5 +1,6 @@
 class EventsController < InheritedResources::Base
-  before_action :set_event, only: %i[ show edit update destroy invite ]
+  before_action :set_event, only: %i[ show edit update destroy send_invites ]
+  layout 'event'
   # def new
   #   @event = Event.new event_params
   # end
@@ -7,12 +8,18 @@ class EventsController < InheritedResources::Base
     @events = Event.where(:customer_id => current_user.customer_id)
   end
 
-  def invite
-    EventMailer.with(event: @event).invite.deliver_now
-    redirect_to @event, notice: 'invite sent'
+  def send_invites
+    event = Event.find(params[:id])
+    event.guests.each do |guest|
+      EventMailer.invite_email(guest, event).deliver_later
+    end
+    redirect_to event_path(event), notice: 'Invitations sent!'
   end
 
   def show
+    @guests = Guest.where(:customer_id => current_user.customer_id, :event_id => session[:event_id])
+    @total_guests = Guest.all.count
+
     @event = Event.find(params[:id])
     respond_to do |format|
       format.html
@@ -26,8 +33,19 @@ class EventsController < InheritedResources::Base
   end
 
   def create
-    @event = current_user.events.build(event_params)
+    if Guest.new
+      event_id = params[:event_id]
+      customer_id = params[:customer_id]
+      if params[:csv_file].present?
+        guests_data = params[:csv_file].read
+        CSV.parse(guests_data, headers: true) do |row|
+          Guest.create(first_name: row['first_name'], last_name: row['last_name'], email: row['email'], mobile_number: row['mobile_number'], event_id: row[event_id], customer_id: row[customer_id])
+        end
+          redirect_to event_path(session[:event_id]), notice: 'Guests were successfully seeded.'
+      end
+    end
     
+    @event = current_user.events.build(event_params)
     respond_to do |format|
       if @event.save
         format.html { redirect_to events_path, notice: 'Successfully added event.' }
@@ -45,8 +63,12 @@ class EventsController < InheritedResources::Base
       @event = current_user.events.find(params[:id])
     end
 
+    def guest_params
+      params.require(:guest).permit(:first_name, :last_name, :email, :mobile_number, :event_id, :customer_id)
+    end
+
     def event_params
-      params.require(:event).permit(:event_name, :event_url, :event_type_id, :location_name, :location_address, :start_time, :end_time, :customer_id, :user_id, :qrcode)
+      params.require(:event).permit(:event_name, :event_url, :event_type_id, :description, :location_name, :location_address, :start_time, :end_time, :customer_id, :user_id, :qrcode)
     end
 
 end

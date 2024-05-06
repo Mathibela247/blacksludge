@@ -8,4 +8,4 @@ pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin_all_from "app/javascript/sidebars", under: "sidebars"
 pin "@rails/ujs", to: "https://ga.jspm.io/npm:@rails/ujs@7.1.2/app/assets/javascripts/rails-ujs.esm.js"
-pin "@stimulus-components/content-loader", to: "https://ga.jspm.io/npm:@stimulus-components/content-loader@5.0.0/dist/stimulus-content-loader.mjs"
+# pin "@stimulus-components/content-loader", to: "https://ga.jspm.io/npm:@stimulus-components/content-loader@5.0.0/dist/stimulus-content-loader.mjs"

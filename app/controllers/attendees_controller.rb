@@ -1,11 +1,14 @@
 class AttendeesController < InheritedResources::Base
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   layout 'attendee'
 
   def show
     @attendee = Attendee.find(params[:id])
   end
 
+  # def attendees
+  #   render partial: 'attendees/attendees', locals: { attendees: @attendee }
+  # end
   def index
     @checkin = Checkin.new
     # @checkin_new = @checkin.build
@@ -21,19 +24,19 @@ class AttendeesController < InheritedResources::Base
       # end 
     end
 
-    # if turbo_frame_request?
-    #   render partial: "attendees", locals: { attendees: @attendees }
-    # else
-    #   render :index
-    # end
+    if turbo_frame_request?
+      render partial: "attendees", locals: { attendees: @attendees }
+    else
+      render :index
+    end
   end
 
-  def lazy_load
-    # sleep(2)
-    @attendees = Attendee.left_outer_joins(:checkins).where(checkins: {attendee_id: nil})
+  # def lazy_load
+  #   # sleep(2)
+  #   @attendees = Attendee.left_outer_joins(:checkins).where(checkins: {attendee_id: nil})
 
-    render partial: "attendees/attendees", attendees: @attendees
-  end
+  #   render partial: "attendees/attendees", attendees: @attendees
+  # end
 
   def create
     if Attendee.new
@@ -60,11 +63,9 @@ class AttendeesController < InheritedResources::Base
             format.json { render json: @@attendee.errors, status: :unprocessable_entity }
           end
         end
-    end
       end
-
-    
-      
+    end
+ 
     if @checkin
       @checkin = Checkin.build
       respond_to do |format|
@@ -92,6 +93,10 @@ class AttendeesController < InheritedResources::Base
     
     def checkin_params
       params.require(:checkin).permit(:attendee_id, :checked_in)
+    end
+
+    def set_attendee
+      @attendee = Attendee.find(params[:id])
     end
 
 end

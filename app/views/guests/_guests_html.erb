@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "guests" do %>
+    <% @guests.each do |g| %>
+        <%= g.email %>
+    <% end %>    
+<% end %>

@@ -5,7 +5,19 @@ ActiveAdmin.register Attendee do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :first_name, :last_name, :email, :company, :mobile_number
+   permit_params :first_name, :last_name, :email, :company, :mobile_number, :customer_id
+
+   form do |f|
+    f.inputs do
+      f.input :first_name
+      f.input :last_name
+      f.input :email
+      f.input :company
+      f.input :mobile_number
+      f.input :customer_id, :as => :select, :collection => Customer.all.collect {|customer| [customer.name, customer.id] }
+    end
+    f.actions
+  end
   #
   # or
   #

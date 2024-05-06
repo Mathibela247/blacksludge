@@ -37,14 +37,14 @@
     
     <style>
       html,body{
-        background-image: url('<%= change_background_image() %>');
+        background-image: url('<%= change_background_image() %>'); 
         background-size: cover;
         background-repeat: no-repeat;
         height: 100%;
         font-family: 'Numans', sans-serif;
         }
         h1{
-          color: <%= change_background_color() %>;
+          color: <%= change_h1_color() %>;
           font-size: <%= headersize() %>
         }
         .chat{
@@ -468,7 +468,7 @@
    
     <div class="container">
       <div class="row justify-content-center">
-          <h1 class="h3 mb-3 fw-normal"><%= image_tag("#{change_logo()}", width:"172", class: "mb-4") %></h1>
+          <h1 class="h3 mb-3 fw-normal"></h1>
       </div>
       <%= yield %>
     </div>    

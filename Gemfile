@@ -110,3 +110,5 @@ gem 'rotp'
 gem 'mail'
 
 gem "tailwindcss-rails", "~> 2.3"
+
+gem 'wicked'

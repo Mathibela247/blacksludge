@@ -1,0 +1,36 @@
+<%= form_with(model: guest, turbo_frame: "guests", turbo_action: "advance") do |form| %>
+  <% if guest.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(guest.errors.count, "error") %> prohibited this guest from being saved:</h2>
+
+      <ul>
+        <% guest.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col">
+      <%= form.text_field :first_name, class:"form-control", placeholder:"First name" %>
+    </div><br><br>
+    <div class="col">
+      <%= form.text_field :last_name, class:"form-control", placeholder:"Last name" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <%= form.text_field :email, class:"form-control", placeholder:"Email" %>
+    </div><br><br>
+    <div class="col">
+      <%= form.text_field :mobile_number, class:"form-control", placeholder:"Mobile" %>
+    </div>
+  </div>
+    
+    <%= form.hidden_field :event_id, value: session[:event_id] %>
+    <%= form.hidden_field :customer_id, value: current_user.customer_id %>
+  <div class="inline">
+    <%= form.submit "Add Guest", class: "btn btn-info" %>
+  </div>
+<% end %>
