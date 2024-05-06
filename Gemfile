@@ -10,7 +10,7 @@ gem "rails", "~> 7.0.4", ">= 7.0.4.3"
 gem "sprockets-rails"
 
 # Use mysql as the database for Active Record
-#gem "mysql2"
+gem "mysql2"
 gem "pg"
 
 # Use the Puma web server [https://github.com/puma/puma]
@@ -88,7 +88,7 @@ gem "cssbundling-rails", "~> 1.1"
 
 gem "city-state", "~> 0.1.0"
 gem 'phonelib'
-#gem 'activeadmin', github: 'activeadmin/activeadmin', branch: 'master'
+gem 'activeadmin'
 
 gem "icalendar", "~> 2.8"
 
