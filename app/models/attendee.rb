@@ -1,11 +1,11 @@
 class Attendee < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :invitable, 
-         :rememberable, :validatable
+  
     has_many :checkins
     validates :first_name, :last_name, :email, presence: true
     validates :email, uniqueness: true
+    belongs_to :guest, optional: true
    
 
     def self.search(params)

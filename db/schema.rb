@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_05_110627) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_06_210856) do
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
@@ -88,24 +88,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_110627) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "company"
     t.string "mobile_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id"
-    t.string "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer "invitation_limit"
-    t.string "invited_by_type"
-    t.bigint "invited_by_id"
-    t.integer "invitations_count", default: 0
     t.datetime "remember_created_at"
+    t.integer "event_id"
+    t.string "dietary_restriction"
+    t.string "accomodation"
     t.index ["email"], name: "index_attendees_on_email", unique: true
-    t.index ["invitation_token"], name: "index_attendees_on_invitation_token", unique: true
-    t.index ["invited_by_id"], name: "index_attendees_on_invited_by_id"
-    t.index ["invited_by_type", "invited_by_id"], name: "index_attendees_on_invited_by"
   end
 
   create_table "candidates", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -223,6 +214,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_110627) do
     t.datetime "updated_at", null: false
     t.string "update_token"
     t.string "rsvp_status"
+    t.string "dietary_restriction"
+    t.string "accomodation"
     t.index ["update_token"], name: "index_guests_on_update_token", unique: true
   end
 

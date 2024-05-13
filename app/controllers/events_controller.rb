@@ -18,7 +18,14 @@ class EventsController < InheritedResources::Base
 
   def show
     @guests = Guest.where(:customer_id => current_user.customer_id, :event_id => session[:event_id])
-    @total_guests = Guest.all.count
+    @total_guests = @guests.count
+    @total_declined = Guest.where(:customer_id => current_user.customer_id, :event_id => session[:event_id],:rsvp_status => "No").count
+    @total_confirmed = Guest.where(:customer_id => current_user.customer_id, :event_id => session[:event_id],:rsvp_status => "Yes").count
+    @total_unconfirmed = Guest.where(:customer_id => current_user.customer_id, :event_id => session[:event_id],:rsvp_status => nil).count
+   
+    if params[:query].present?
+      @guests = Guest.where("first_name like ? || email like ?", "%#{params[:query]}%","%#{params[:query]}%")
+    end
 
     @event = Event.find(params[:id])
     respond_to do |format|
@@ -55,6 +62,22 @@ class EventsController < InheritedResources::Base
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
     end
+
+    @guest = Guest.create(guest_params)
+      respond_to do |format|
+        if @guest.save
+          format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.update('new_guest', partial: "guests/form", locals: { guest: Guest.new })
+          ]
+         end
+                format.html { redirect_to event_path(session[:event_id]), notice: 'Successfully added Guest.' }
+                format.json { render :show, status: :created, location: @@guest}
+              else
+                format.html { render :new }
+                format.json { render json: @@guest.errors, status: :unprocessable_entity }
+              end
+            end
   end
 
   private

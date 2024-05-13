@@ -1,5 +1,5 @@
 class GuestsController < InheritedResources::Base
-  before_action :set_guest, only: [:show, :update]
+  before_action :set_guest, only: [:show, :update, :update_status]
   layout 'event'
 
     def show
@@ -12,10 +12,24 @@ class GuestsController < InheritedResources::Base
     def update
       @guest = Guest.find(params[:id])
       if @guest.update(guest_params)
-        redirect_to @guest, notice: 'Guest details updated successfully.'
+        
+        flash[:notice] = "Your details have been updated successfully.".html_safe
+        redirect_to @guest
+    
       else
         render :edit
       end
+    end
+
+    def update_status
+      # Example update logic, e.g., updating the status of an item
+      if @guest.update(rsvp_status: params[:rsvp_status])
+        flash[:notice] = "RSVP status updated successfully."
+      else
+        flash[:alert] = "Failed to update RSVP status."
+      end
+  
+      redirect_to declines_index_url # Redirect to a desired location after update
     end
 
     def create
@@ -25,7 +39,7 @@ class GuestsController < InheritedResources::Base
         if params[:csv_file].present?
           guests_data = params[:csv_file].read
           CSV.parse(guests_data, headers: true) do |row|
-            Guest.create(first_name: row['first_name'], last_name: row['last_name'], email: row['email'], mobile_number: row['mobile_number'], event_id: row[event_id], customer_id: row[customer_id])
+            Guest.create(first_name: row['first_name'], last_name: row['last_name'], email: row['email'], mobile_number: row['mobile_number'], event_id: row['event_id'], customer_id: row['customer_id'])
           end
             redirect_to event_path(session[:event_id]), notice: 'Guests were successfully seeded.'
         else
@@ -55,7 +69,7 @@ class GuestsController < InheritedResources::Base
     end
 
     def guest_params
-      params.require(:guest).permit(:first_name, :last_name, :email, :mobile_number, :event_id, :customer_id, :rsvp_status)
+      params.require(:guest).permit(:first_name, :last_name, :email, :mobile_number, :event_id, :customer_id, :rsvp_status, :accomodation, :dietary_restriction)
     end
 
 end

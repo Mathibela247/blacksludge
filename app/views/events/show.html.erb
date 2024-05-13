@@ -1,5 +1,9 @@
 <div class="container">
-  <p style="color: green"><%= notice %></p>
+  <% if notice.present? %>
+    <div class="alert alert-success" role="alert">
+      <p class="text-center" id="notice"><%= notice %></p>
+    </div>
+  <% end %>
     <div class="row">
       <div class="col-md-4">
         <div class="card pricing-card pricing-plan-basic">
@@ -57,19 +61,31 @@
               <i class="mdi mdi-account-box-outline mdi-24px"></i>
               <p class="pricing-plan-title">Only for this particular event</p>
               <h3 class="pricing-plan-cost ml-auto">Guest List</h3>
+              <%= form_with(url: event_path(@event), method: :get, data: { controller: "form-submission", turbo_frame: "guests", turbo_action: "advance" }) do |form| %>
+                  <div class="input-group">
+                    <%= form.text_field :query, data: { action: "input->form-submission#search" }, class: "form-control search", placeholder: "Search by First Name or Email" %> 
+                    <div class="input-group-prepend">
+                      <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+                    </div>
+                  </div>  
+              <% end %>
               <ul class="pricing-plan-features">
                 <turbo-frame id="guests"> 
                   <% @guests.each do |g| %>
                     <%= form_with(method: :post) do |form| %>
-                      <li><%= g.email %></li>
+                      <% if g.rsvp_status == "Yes" %><span style="color: green"><%= link_to edit_guest_path(g) do %><i class="fas fa-pencil"></i><%end%> <%= g.email %></span><% elsif g.rsvp_status == "No" %><span style="color: red"><%= link_to edit_guest_path(g) do %><i class="fas fa-pencil"></i><%end%> <%= g.email %></span><% else %><%= link_to edit_guest_path(g) do %><i class="fas fa-pencil"></i><%end%><%= g.email %><% end %>
                     <% end %>   
                   <% end %></p>
                   <p><%= link_to 'Send Invites', send_invites_event_path(@event), method: :post, class: "btn btn-primary btn-sm", data: { confirm: 'Are you sure you want to send invitations?' } %></p>
                 </turbo-frame> 
-                total guests: <%= @total_guests %>
+                <p><b>Green:</b> Accepted <span class="badge badge-success badge-counter"><%= @total_confirmed %></span></p>
+                <p><b>Red:</b> Declined <span class="badge badge-danger badge-counter"><%= @total_declined %></span></p>
+                <p><b>Black:</b> Not Responded <span class="badge badge-dark badge-counter"><%= @total_unconfirmed %></span></p>
+                <p><b>Total Guests:</b> <span class="badge badge-primary badge-counter"><%= @total_guests %></span></p>
               </ul>
             </div>  
           </div>
+          
       </div>
         
     </div>  

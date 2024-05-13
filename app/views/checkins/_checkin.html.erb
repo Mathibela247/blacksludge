@@ -2,29 +2,36 @@
   <div class="d-flex justify-content-start mb-4">
     <div class="img_cont_msg">
      
-      <%= button_to "#", method: :get, id: "print-button", class: "btn btn-primary rounded-circle fa fa-print" do %>
+      <%= button_to "", method: :get, onclick: "printUserDetails()", class: "btn btn-primary rounded-circle fa fa-print" do %>
             <span class="glyphicon glyphicon-print" aria-hidden="true">
           <% end %>
 		</div>
-    <div class="msg_cotainer"> 
-      <span id="print-content"><%= checkin.attendee.first_name %> <%= checkin.attendee.last_name %></span>
-      <span class="msg_time" id="print-time"><% if checkin.checked_in? == true %><%= checkin.attendee.created_at %> <% end %></span>
+  <% 
+    @attendee = Attendee.find(checkin.attendee_id)
+    @event = Event.find(@attendee.event_id) 
+  %>
+   
+      <div class="row">
+        <div class="msg_cotainer"> 
+          <span id="print-content"><%= checkin.attendee.first_name %> <%= checkin.attendee.last_name %></span>
+          <span class="msg_time" id="print-time"><% if checkin.checked_in? == true %><%= checkin.attendee.created_at %> <% end %></span>
+        </div>
       </div>
-    </div>
+   </div> 
 </div>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  var printButton = document.getElementById("print-button");
-  if (printButton) {
-    printButton.addEventListener("click", function() {
-      var value1 = printButton.getAttribute("data-value1");
-      var printContent = document.getElementById("print-content").innerHTML;
-      var printTime = document.getElementById("print-time").innerHTML;
-      var printWindow = window.open("", "_blank");
-      printWindow.document.write("<html><head><title>Print Preview</title></head><body><h2>" + printContent + "</h2><p>" + printTime + "</p></body></html>");
-      printWindow.document.close();
-      printWindow.print();
-    });
-  }
-});
-</script>
+
+<script type="text/javascript">
+  var eventType = "<%= @event.event_type.name %>";  
+  var eventName = "<%= @event.event_name %>";
+  var qrCode = "<%= image_tag(url_for(@event.qrcode)) %>";
+
+  function printUserDetails() {
+    var printWindow = window.open("", "_blank");
+    printWindow.document.write("<h1>Event Details</h1>");
+    printWindow.document.write("<p>" + eventType + "</p>");
+    printWindow.document.write("<p>" + eventName + "</p>");
+    printWindow.document.write("<p>" + qrCode + "</p>");
+    printWindow.document.close(); 
+    printWindow.print();  
+  };
+</script>;

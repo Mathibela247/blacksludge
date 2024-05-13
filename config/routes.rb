@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  get 'declines/index'
   # resources :guests
   resources :packages, only: [:index] do
     resources :customers
   end
   resources :after_signups
-  devise_for :attendees
   resources :industries
   resources :setting_attendees
   # namespace :proxy do
@@ -68,7 +68,11 @@ Rails.application.routes.draw do
     get 'send_invites', on: :member
   end
   
-  resources :guests
+  resources :guests do
+    member do
+      get :update_status # This is an example; customize as needed
+    end
+  end
 
   root to: "packages#index"
   resources :event_types

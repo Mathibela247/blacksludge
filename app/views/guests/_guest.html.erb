@@ -1,9 +1,16 @@
 <div id="<%= dom_id guest %>">
   <div class="container">
-    <h5 class="text-center pricing-table-subtitle"><%= guest.event.start_time %> to <%= guest.event.end_time %></h5>
+    <h2 class="text-center pricing-table-subtitle"><strong>REGISTRATION CONFIRMATION</strong></h2>
+    <% if notice.present? %>
+      <div class="alert alert-success" role="alert">
+        <p class="text-center" id="notice"><%= notice %></p>
+      </div>
+    <% end %>
+    <h5 class="text-center pricing-table-subtitle"><%= guest.event.start_time.strftime("%Y-%m-%d %H:%M") %> to <%= guest.event.end_time.strftime("%Y-%m-%d %H:%M") %></h5>
     <h1 class="text-center pricing-table-title"><strong><%= guest.event.event_name %></strong></h1>
     <h5 class="text-center pricing-table-subtitle"><%= guest.event.location_name %></h5>
     <h5 class="text-center pricing-table-subtitle"><%= guest.event.location_address %></h5>
+    <br><br>
     <div class="row">
       <div class="col-md-4">  
         <div class="card pricing-card pricing-plan-basic">
@@ -39,12 +46,27 @@
             <i class="mdi mdi-calendar-clock mdi-24px"></i>
             <h5 class="text-center pricing-table-subtitle">RSVP</h5>
             <p class="my-5">
-                <strong class="block mb-1">RSVP:</strong>
-                <%= guest.rsvp_status %>
+                <strong class="block mb-1"><%= guest.rsvp_status %></strong>, I will be attending.
             </p>
           </div>
         </div>
-      </div>      
+      </div>     
+
+      <div class="col-md-4">  
+        <div class="card pricing-card pricing-plan-basic">
+          <div class="card-body">
+            <i class="mdi mdi-calendar-clock mdi-24px"></i>
+            <h5 class="text-center pricing-table-subtitle">Dietary Restrictions & accommodation</h5>
+            <p class="my-5">
+                <strong class="block mb-1">Dietary Restriction</strong>
+                <%= guest.dietary_restriction %>
+            </p>
+                <% if guest.accomodation == "Yes" %><strong class="block mb-1"><%= guest.accomodation %></strong>, Please organise Accommodation for me.<% else %><strong class="block mb-1"><%= guest.accomodation %></strong>, Do not arrange accomodation for me.<% end %>
+                
+            </p>
+          </div>
+        </div>
+      </div>  
 
   </div>
 </div>

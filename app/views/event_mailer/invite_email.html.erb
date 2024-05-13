@@ -7,9 +7,7 @@
     <div class="col-md-4"> 
         <p>Hello, <%= @guest.fullname %>!</p>
 
-        <p>You're invited to <%= @event.event_name %>! Please click the link below to update your details or confirm your attendance:</p>
-
-        <p><%= link_to 'Update your details', @update_url, class: "btn btn-info" %></p>
+        <p>You're invited to <%= @event.event_name %>! Click "Register Now!" below to secure your spot: <%= link_to 'Register NOW!', @update_url, class: "btn btn-info" %></p>
+        <p>Can't make it? Let us know by clicking "Decline": <%= link_to 'Decline', update_status_guest_url(@guest, rsvp_status: 'No'), class: "btn btn-info", method: :patch %></p>
     </div>  
 </div>  
-       

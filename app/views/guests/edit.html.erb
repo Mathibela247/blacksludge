@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>Update Your Details</h2>
+  <h2>Confirm Your Details</h2>
   <%= form_with(model: [@event, @guest], local: true) do |form| %>
     <% if @guest.errors.any? %>
       <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
@@ -35,15 +35,24 @@
     </div>
       <%= form.hidden_field :event_id %>
       <%= form.hidden_field :customer_id %>
-    <div class="col">
-      <%= form.label :rsvp_status %>
-      <%= form.select :rsvp_status, ['Attending', 'Not Attending', 'Maybe'], {}, class:"col-md-4 form-control" %>
-    </div><br>
-    <div class="col">
-      <%= form.submit 'Update', class: "btn btn-primary" %>
-    </div>  
-  </div>
-    
-    
+    <div class="row">
+      <div class="col">
+        <%= form.label "Are you attending?" %>
+        <%= form.select :rsvp_status, ['Yes', 'No', 'Maybe'], {}, class:"col-md-4 form-control" %>
+      </div>
+    </div> 
+    <div class="row"> 
+      <div class="col">
+        <%= form.label "Do you need :accommodation suggestions?" %>
+        <%= form.select :accomodation, ['Yes', 'No'], {}, class:"col-md-4 form-control" %>
+      </div>
+      <div class="col">
+        <%= form.label :dietary_restriction %>
+        <%= form.select :dietary_restriction, ['None','dairy-free', 'gluten-free', 'vegetarian'], {}, class:"col-md-4 form-control" %>
+      </div><br><br>
+      <div class="col">
+        <%= form.submit 'Update', class: "btn btn-primary" %>
+      </div>  
+    </div>
   <% end %>
 </div>  

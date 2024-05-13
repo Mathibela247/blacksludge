@@ -33,7 +33,7 @@
           <%= form.text_field :email, class:"form-control", placeholder:"Email" %>
         </div>
         <div class="col">
-          <%= form.text_field :company, class:"form-control", placeholder:"Company Name" %>
+          <%= form.select :event_id, Event.all.collect{ |p| [ p.event_name, p.id ] }, {include_blank: "Event Name"}, class: "form-control" %>   
         </div>
       </div>
       <br/>
@@ -41,6 +41,11 @@
         <div class="col">
           <%= form.text_field :mobile_number, class:"form-control", placeholder:"Mobile Number" %>
         </div>
+        <div class="col">
+          <%= form.select :customer_id, Customer.all.collect{ |p| [ p.name, p.id ] }, {include_blank: "Account Name"}, class: "form-control" %>   
+        </div>
+      </div><br><br>
+      <div class="row">
         <div class="col">
           <%= form.submit class:"btn btn-primary" %>
         </div>

@@ -31,12 +31,6 @@ class AttendeesController < InheritedResources::Base
     end
   end
 
-  # def lazy_load
-  #   # sleep(2)
-  #   @attendees = Attendee.left_outer_joins(:checkins).where(checkins: {attendee_id: nil})
-
-  #   render partial: "attendees/attendees", attendees: @attendees
-  # end
 
   def create
     if Attendee.new
@@ -88,7 +82,7 @@ class AttendeesController < InheritedResources::Base
   private
 
     def attendee_params
-      params.require(:attendee).permit(:first_name, :last_name, :email, :company, :mobile_number)
+      params.require(:attendee).permit(:first_name, :last_name, :email, :customer_id, :event_id, :mobile_number)
     end
     
     def checkin_params
