@@ -45,7 +45,7 @@ gem 'devise_invitable'
 gem "image_processing", "~> 1.2"
 gem "cssbundling-rails", "~> 1.1"
 gem 'jsbundling-rails'
-gem "city-state", "~> 0.1.0"
+gem "city-state", "~> 1.1.0"
 gem 'phonelib'
 gem 'activeadmin'
 gem "icalendar", "~> 2.8"
