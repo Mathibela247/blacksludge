@@ -43,7 +43,7 @@ gem 'event-calendar', :require => 'event_calendar'
 gem "simple_calendar"
 gem 'devise_invitable'
 gem "image_processing", "~> 1.2"
-gem "cssbundling-rails", "~> 1.1"
+gem "cssbundling-rails", "~> 1.4"
 gem 'jsbundling-rails'
 gem "city-state", "~> 0.1.0"
 gem 'phonelib'
