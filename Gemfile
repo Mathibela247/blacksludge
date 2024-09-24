@@ -57,7 +57,7 @@ gem 'acts_as_votable'
 gem "view_component"
 gem 'rotp'
 gem 'mail'
-gem "tailwindcss-rails", "~> 2.3"
+gem "tailwindcss-rails", "~> 2.7"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 
 
